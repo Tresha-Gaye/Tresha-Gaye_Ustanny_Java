@@ -11,7 +11,7 @@ public class ConverterSwitch implements Converter {
 
     private DayOfWeek day;
 
-    public void convertMonth(int monthNumber) {
+    public int convertMonth(int monthNumber) {
         month = Month.of(monthNumber);
 
         /* alt implementation
@@ -74,9 +74,10 @@ public class ConverterSwitch implements Converter {
                 System.out.println("Enter an integer between 1 and 12");
         }
         System.out.println("Month #" + monthNumber + " is the same as " + month + " (switch case)!");
+        return monthNumber;
     }
 
-    public void convertDay(int dayNumber) {
+    public int convertDay(int dayNumber) {
         day = DayOfWeek.of(dayNumber);
 
         switch(dayNumber) {
@@ -105,6 +106,7 @@ public class ConverterSwitch implements Converter {
                 System.out.println("Enter an integer between 1 and 7");
         }
         System.out.println("Day #" + dayNumber + " is the same as " + day + " (switch case)!");
+        return dayNumber;
     }
 
     @Override
