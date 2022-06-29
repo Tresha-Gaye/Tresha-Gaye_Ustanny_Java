@@ -14,164 +14,206 @@ public class CalculatorObjectTest {
         calculator = new CalculatorObject();
     }
 
-    // integer tests - add, subtract, multiply divide
-    // positive & negative & mixed integers
-
     @Test
-    public void shouldAddTwoPositiveIntegers() {
+    public void shouldAddTwoIntegersAndReturnSum() {
         int expectedOutput = 12;
         int actualOutput = calculator.add(7, 5);
         assertEquals(expectedOutput, actualOutput);
-    }
 
-    @Test
-    public void shouldAddTwoNegativeIntegers() {
-        int expectedOutput = -10;
-        int actualOutput = calculator.add(-8, -2);
+        expectedOutput = -10;
+        actualOutput = calculator.add(-8, -2);
         assertEquals(expectedOutput, actualOutput);
+
+        expectedOutput = -1;
+        actualOutput = calculator.add(-3, 2);
+        assertEquals(expectedOutput, actualOutput);
+
+        expectedOutput = 1;
+        actualOutput = calculator.add(3, -2);
+        assertEquals(expectedOutput, actualOutput);
+
+        expectedOutput = 12;
+        actualOutput = calculator.add(0, 12);
+        assertEquals(expectedOutput, actualOutput);
+
     }
 
     @Test
-    public void shouldSubtractTwoNegativeIntegers() {
+    public void shouldSubtractTwoIntegersAndReturnDifference() {
         int expectedOutput = -1;
         int actualOutput = calculator.subtract(-3, -2);
         assertEquals(expectedOutput, actualOutput);
-    }
 
-    @Test
-    public void shouldSubtractTwoPositiveIntegers() {
-        int expectedOutput = 12;
-        int actualOutput = calculator.subtract(17, 5);
+        expectedOutput = 12;
+        actualOutput = calculator.subtract(17, 5);
+        assertEquals(expectedOutput, actualOutput);
+
+        expectedOutput = -12;
+        actualOutput = calculator.subtract(-8, 4);
+        assertEquals(expectedOutput, actualOutput);
+
+        expectedOutput = 4;
+        actualOutput = calculator.subtract(4, 0);
+        assertEquals(expectedOutput, actualOutput);
+
+        expectedOutput = -7;
+        actualOutput = calculator.subtract(0, 7);
         assertEquals(expectedOutput, actualOutput);
     }
 
-    @Test
-    public void shouldSubtractPositiveAndNegativeIntegers() {
-        int expectedOutput = -12;
-        int actualOutput = calculator.subtract(-8, 4);
-        assertEquals(expectedOutput, actualOutput);
-    }
 
     @Test
-    public void shouldMultiplyTwoPositiveIntegers() {
+    public void shouldMultiplyTwoIntegersAndReturnProduct() {
         int expectedOutput = 12;
         int actualOutput = calculator.multiply(2, 6);
         assertEquals(expectedOutput, actualOutput);
-    }
 
-    @Test
-    public void shouldMultiplyTwoNegativeIntegers() {
-        int expectedOutput = 10;
-        int actualOutput = calculator.multiply(-5, -2);
+        expectedOutput = 10;
+        actualOutput = calculator.multiply(-5, -2);
         assertEquals(expectedOutput, actualOutput);
-    }
 
-    @Test
-    public void shouldMultiplyPositiveAndNegativeIntegers() {
-        int expectedOutput = -18;
-        int actualOutput = calculator.multiply(-9, 2);
+        expectedOutput = -18;
+        actualOutput = calculator.multiply(-9, 2);
         assertEquals(expectedOutput, actualOutput);
+
+        expectedOutput = 0;
+        actualOutput = calculator.multiply(12, 0);
+        assertEquals(expectedOutput, actualOutput);
+
+        expectedOutput = -1;
+        actualOutput = calculator.multiply(1, -1);
+        assertEquals(expectedOutput, actualOutput);
+
     }
 
     @Test
-    public void shouldDivideTwoPositiveIntegers() {
+    public void shouldDivideTwoIntegersAndReturnQuotient() {
         int expectedOutput = 3;
         int actualOutput = calculator.divide(6, 2);
-//        int actualOutput = calculator.divide(4, 2);
-//        int actualOutput = calculator.divide(10, 5);
         assertEquals(expectedOutput, actualOutput);
-//        assertEquals(2, 4); //find out how to test variations
+
+        expectedOutput = -16;
+        actualOutput = calculator.divide(-32, 2);
+        assertEquals(expectedOutput, actualOutput);
+
+        expectedOutput = -2;
+        actualOutput = calculator.divide(32, -16);
+        assertEquals(expectedOutput, actualOutput);
+
+        expectedOutput = 0;
+        actualOutput = calculator.divide(0, 19);
+        assertEquals(expectedOutput, actualOutput);
     }
 
-    @Test
-    public void shouldDividePositiveAndNegativeIntegers() {
-        int expectedOutput = -16;
-        int actualOutput = calculator.divide(-32, 2);
-        assertEquals(expectedOutput, actualOutput);
-    }
+
+
+//    @Test
+//    public void shouldThrowErrorIfDividendIsZero() {
+//
+//        String failMessage = "Expected calculator to handle long division.";
+//        assertEquals(failMessage, 0, calculator.divide((int) 2, (int) 0));
+//
+//            int expectedOutput = 0;
+//            int actualOutput = String.valueOf(calculator.divide(32, 0));
+//            assertEquals(expectedOutput, actualOutput);
+//
+//            expectedOutput = "Error: you cannot divide an integer by zero";
+//            actualOutput = String.valueOf(calculator.divide(0, 19));
+//            assertEquals(expectedOutput, actualOutput);
+
+//    }
 
     // doubles tests - add, subtract, multiply divide
     // positive & negative & mixed doubles
 
     @Test
-    public void shouldAddTwoPositiveDoubles() {
-        double delta = 1e-8; // got this suggestion for delta from https://coderanch.com/t/94967/engineering/jUnit-assert-delta
+    public void shouldAddTwoDoublesAndReturnSum() {
+        double delta = 1e-4; // 0.0001 - got this suggestion for delta from https://coderanch.com/t/94967/engineering/jUnit-assert-delta
         double expectedOutput = 2.0;
         double actualOutput = calculator.divide(6.0d, 3.0d);
         assertEquals(expectedOutput, actualOutput, delta); // error message suggested adding delta to assertEquals() for doubles
-    }
 
-    @Test
-    public void shouldAddTwoNegativeDoubles() {
-
-        double delta = 1e-8;
-        double expectedOutput = -10.0;
-        double actualOutput = calculator.add(-8.0, -2.0);
+        expectedOutput = -10.0;
+        actualOutput = calculator.add(-8.0, -2.0);
         assertEquals(expectedOutput, actualOutput, delta);
+
+        expectedOutput = 8.0;
+        actualOutput = calculator.add(8.0, 0);
+        assertEquals(expectedOutput, actualOutput, delta);
+
+        expectedOutput = 0.3;
+        actualOutput = calculator.add(0, 0.3);
+        assertEquals(expectedOutput, actualOutput, delta);
+
     }
 
+
+
     @Test
-    public void shouldSubtractTwoNegativeDoubles() {
-        double delta = 1e-8;
+    public void shouldSubtractTwoDoublesAndReturnDifference() {
+        double delta = 1e-4;
         double expectedOutput = -1;
         double actualOutput = calculator.subtract(-3, -2);
         assertEquals(expectedOutput, actualOutput, delta);
-    }
 
-    @Test
-    public void shouldSubtractTwoPositiveDoubles() {
-        double delta = 1e-8;
-        double expectedOutput = 1.1;
-        double actualOutput = calculator.subtract(2.6, 1.5);
+        expectedOutput = 1.1;
+        actualOutput = calculator.subtract(2.6, 1.5);
+        assertEquals(expectedOutput, actualOutput, delta);
+
+        expectedOutput = -13.6;
+        actualOutput = calculator.subtract(-9.5, 4.1);
+        assertEquals(expectedOutput, actualOutput, delta);
+
+        expectedOutput = 11.5;
+        actualOutput = calculator.subtract(11.5, 0);
+        assertEquals(expectedOutput, actualOutput, delta);
+
+        expectedOutput = -12.7;
+        actualOutput = calculator.subtract(0, 12.7);
         assertEquals(expectedOutput, actualOutput, delta);
     }
 
-    @Test
-    public void shouldSubtractPositiveAndNegativeDoubles() {
-        double delta = 1e-8;
-        double expectedOutput = -13.6;
-        double actualOutput = calculator.subtract(-9.5, 4.1);
-        assertEquals(expectedOutput, actualOutput, delta);
-    }
 
     @Test
-    public void shouldMultiplyTwoPositiveDoubles() {
-        double delta = 1e-8;
+    public void shouldMultiplyTwoDoublesAndReturnProduct() {
+        double delta = 1e-4;
         double expectedOutput = 13.64;
         double actualOutput = calculator.multiply(2.2, 6.2);
         assertEquals(expectedOutput, actualOutput, delta);
-    }
 
-    @Test
-    public void shouldMultiplyTwoNegativeDoubles() {
-        double delta = 1e-8;
-        double expectedOutput = 11.0;
-        double actualOutput = calculator.multiply(-5.5, -2.0);
+        expectedOutput = 11.0;
+        actualOutput = calculator.multiply(-5.5, -2.0);
+        assertEquals(expectedOutput, actualOutput, delta);
+
+        expectedOutput = -6.25;
+        actualOutput = calculator.multiply(-2.5, 2.5);
+        assertEquals(expectedOutput, actualOutput, delta);
+
+        expectedOutput = 0;
+        actualOutput = calculator.multiply(0, 3.9);
+        assertEquals(expectedOutput, actualOutput, delta);
+
+        expectedOutput = 0;
+        actualOutput = calculator.multiply(1.9, 0);
         assertEquals(expectedOutput, actualOutput, delta);
     }
 
-    @Test
-    public void shouldMultiplyPositiveAndNegativeDoubles() {
-        double delta = 1e-8;
-        double expectedOutput = -6.25;
-        double actualOutput = calculator.multiply(-2.5, 2.5);
-        assertEquals(expectedOutput, actualOutput, delta);
-    }
 
     @Test
-    public void shouldDivideTwoPositiveDoubles() {
-        double delta = 1e-8;
+    public void shouldDivideTwoDoublesAndReturnQuotient() {
+        double delta = 1e-4;
         double expectedOutput = 3.1;
         double actualOutput = calculator.divide(6.2, 2.0);
         assertEquals(expectedOutput, actualOutput, delta);
-    }
 
-    @Test
-    public void shouldDividePositiveAndNegativeDoubles() {
-        double delta = 1e-8;
-        double expectedOutput = -4.1;
-        double actualOutput = calculator.divide(-32.8, 8.0);
+        expectedOutput = -4.1;
+        actualOutput = calculator.divide(-32.8, 8.0);
+        assertEquals(expectedOutput, actualOutput, delta);
+
+        expectedOutput = 0;
+        actualOutput = calculator.divide(0, 3.2);
         assertEquals(expectedOutput, actualOutput, delta);
     }
+
 
 }

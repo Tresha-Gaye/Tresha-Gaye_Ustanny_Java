@@ -2,118 +2,104 @@ package com.company;
 
 import com.company.interfaces.Converter;
 
-import java.time.DayOfWeek;
 import java.time.Month;
 
 public class ConverterSwitch implements Converter {
 
     private Month month;
 
-    private DayOfWeek day;
-
-    public int convertMonth(int monthNumber) {
+    public String convertMonth(int monthNumber) {
         month = Month.of(monthNumber);
 
-        /* alt implementation
-        switch (dayNumber) {
-        case 1:
-        return "Sunday";
-        (break statement is not necessary if using a return statement
-        ...
-
-        OR
-        create variable
-        String returnVal = "no day";
-        switch (dayNumber) {
-        case 1:
-        returnVal = "Sunday";
-        break;
-        }
-        return "no day";
-         */
-
+        String toMonth = "";
 
         switch(monthNumber) {
             case 1:
-                Month.of(1);
+                toMonth = String.valueOf(Month.of(1));
                 break;
             case 2:
-                Month.of(2);
+                toMonth = String.valueOf(Month.of(2));
                 break;
             case 3:
-                Month.of(3);
+                toMonth = String.valueOf(Month.of(3));
                 break;
             case 4:
-                Month.of(4);
+                toMonth = String.valueOf(Month.of(4));
                 break;
             case 5:
-                Month.of(5);
+                toMonth = String.valueOf(Month.of(5));
                 break;
             case 6:
-                Month.of(6);
+                toMonth = String.valueOf(Month.of(6));
                 break;
             case 7:
-                Month.of(7);
+                toMonth = String.valueOf(Month.of(7));
                 break;
             case 8:
-                Month.of(8);
+                toMonth = String.valueOf(Month.of(8));
                 break;
             case 9:
-                Month.of(9);
+                toMonth = String.valueOf(Month.of(9));
                 break;
             case 10:
-                Month.of(10);
+                toMonth = String.valueOf(Month.of(10));
                 break;
             case 11:
-                Month.of(11);
+                toMonth = String.valueOf(Month.of(11));
                 break;
             case 12:
-                Month.of(12);
+                toMonth = String.valueOf(Month.of(12));
                 break;
             default:
                 System.out.println("Enter an integer between 1 and 12");
         }
-        System.out.println("Month #" + monthNumber + " is the same as " + month + " (switch case)!");
-        return monthNumber;
+        System.out.println("Month " + monthNumber + " is " + month + "!");
+        return toMonth;
     }
 
-    public int convertDay(int dayNumber) {
-        day = DayOfWeek.of(dayNumber);
+    public String convertDay(int dayNumber) {
+
+        String dayOfWeek = "";
 
         switch(dayNumber) {
             case 1:
-                DayOfWeek.of(1);
+                dayOfWeek = "Sunday";
+//                System.out.println("Day 1 is Sunday!");
                 break;
             case 2:
-                DayOfWeek.of(2);
+                dayOfWeek = "Monday";
+//                System.out.println("Day 2 is Monday!");
                 break;
             case 3:
-                DayOfWeek.of(3);
+                dayOfWeek = "Tuesday";
+//                System.out.println( "Day 3 is Tuesday!");
                 break;
             case 4:
-                DayOfWeek.of(4);
+                dayOfWeek = "Wednesday";
+//                System.out.println( "Day 4 is Wednesday!");
                 break;
             case 5:
-                DayOfWeek.of(5);
+                dayOfWeek = "Thursday";
+//                System.out.println( "Day 5 is Thursday!");
                 break;
             case 6:
-                DayOfWeek.of(6);
+                dayOfWeek = "Friday";
+//                System.out.println("Day 6 is Friday!");
                 break;
             case 7:
-                DayOfWeek.of(7);
-                break;
+                dayOfWeek = "Saturday";
+//                System.out.println("Day 7 is Saturday!");
             default:
                 System.out.println("Enter an integer between 1 and 7");
         }
-        System.out.println("Day #" + dayNumber + " is the same as " + day + " (switch case)!");
-        return dayNumber;
+        System.out.println("Day " + dayNumber + " is " + dayOfWeek + "!");
+        return dayOfWeek;
     }
 
     @Override
     public String toString() {
         return "ConverterSwitch{" +
                 "month=" + month +
-                ", day=" + day +
                 '}';
     }
 }

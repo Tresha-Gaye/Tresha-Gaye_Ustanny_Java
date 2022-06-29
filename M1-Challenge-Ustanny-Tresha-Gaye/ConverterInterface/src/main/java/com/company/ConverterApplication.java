@@ -9,11 +9,12 @@ public class ConverterApplication {
          Converter ifElse = new ConverterIf();
          Converter switchCase = new ConverterSwitch();
 
-         ifElse.convertMonth(5);
-         ifElse.convertDay(6);
+         ifElse.convertMonth(4);
+         ifElse.convertDay(1);
 
-         switchCase.convertDay(2);
+         switchCase.convertDay(5);
          switchCase.convertMonth(11);
+
 
     }
 }
