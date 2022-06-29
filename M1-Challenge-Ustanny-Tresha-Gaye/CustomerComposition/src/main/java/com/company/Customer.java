@@ -1,5 +1,7 @@
 package com.company;
 
+import java.util.Objects;
+
 public class Customer {
     private String firstName;
     private String lastName;
@@ -13,14 +15,6 @@ public class Customer {
 
     public String getFirstName() {
         return firstName;
-    }
-
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
     }
 
     public void setFirstName(String firstName) {
@@ -41,6 +35,14 @@ public class Customer {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
     public Address getShippingAddress() {
@@ -68,6 +70,19 @@ public class Customer {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Customer)) return false;
+        Customer customer = (Customer) o;
+        return isRewardsMember() == customer.isRewardsMember() && Objects.equals(getFirstName(), customer.getFirstName()) && Objects.equals(getLastName(), customer.getLastName()) && Objects.equals(getEmail(), customer.getEmail()) && Objects.equals(getPhoneNumber(), customer.getPhoneNumber()) && Objects.equals(getShippingAddress(), customer.getShippingAddress()) && Objects.equals(getBillingAddress(), customer.getBillingAddress());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getFirstName(), getLastName(), getEmail(), getPhoneNumber(), getShippingAddress(), getBillingAddress(), isRewardsMember());
+    }
+
+    @Override
     public String toString() {
         return "Customer{" +
                 "firstName='" + firstName + '\'' +
@@ -79,4 +94,6 @@ public class Customer {
                 ", rewardsMember=" + rewardsMember +
                 '}';
     }
+
+
 }
