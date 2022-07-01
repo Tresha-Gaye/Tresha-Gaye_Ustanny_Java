@@ -1,20 +1,48 @@
 package com.company.pointofsale;
 
+import java.util.Objects;
+
 public class IceCream {
 
     private String flavor;
     private int weight;
     private double price;
-    private int cupSize;
+    private int coneSize;
 
-    public int getCupSize() {
-        return cupSize;
+    public IceCream() {
+
     }
 
-    public void setCupSize(int cupSize) {
-        this.cupSize = cupSize;
+    public IceCream(String flavor, int weight, double price, int coneSize) {
+        this.flavor = flavor;
+        this.weight = weight;
+        this.price = price;
+        this.coneSize = coneSize;
     }
-//    private static int numberOfToppings = 1;
+
+    public double getPrice() {
+        return price;
+    }
+
+    public int getConeSize() {
+        return coneSize;
+    }
+
+    public void setConeSize(int coneSize) {
+        switch (coneSize) {
+            case 1:
+                System.out.println("Our customer ordered a SMALL cone!");
+                break;
+            case 2:
+                System.out.println("Our customer ordered a MEDIUM cone!");
+                break;
+            case 3:
+                System.out.println("Our customer ordered a LARGE cone!");
+                break;
+            default:
+                System.out.println("Tell the customer to choose a cone size from 1 (smallest) to 3 (largest)");
+        }
+    }
 
     public String getFlavor() {
         return flavor;
@@ -32,7 +60,7 @@ public class IceCream {
         this.weight = weight;
     }
 
-    public double getPrice() {
+    public double getPrice(double price) {
         return price;
     }
 
@@ -40,48 +68,30 @@ public class IceCream {
         this.price = price;
     }
 
-    private IceCream(String flavor, int weight, double price) {
-        this.flavor = flavor;
-        this.weight = weight;
-        this.price = price;
-//        numberOfToppings++;
-    }
-
-    public void yummy() {
-        if (weight > 6 && cupSize == 3) {
-            System.out.println("YUUUUMMMMYYYYYYYY!!!!");
-        } else if(weight <= 5) {
-            System.out.println("That looks good!");
-        } else {
-            System.out.println("Would you like some ice cream?");
-        }
+    public void calculatePrice() {
+        double costPerOunce = 0.90;
+        price = costPerOunce * weight;
+        System.out.println("Please pay " + this.getPrice() + " dollars for " + this.getWeight() + " ounces of " + this.flavor + " ice cream!");
     }
 
     public void upSize() {
-        System.out.println("Would you like another scoop?");
         weight += 3;
-        cupSize++;
+        coneSize++;
+        System.out.println("Our customer chose a bigger cone!");
+        calculatePrice();
     }
 
-
-    public void chooseSize(int cupSize) {
-        switch (cupSize) {
-            case 3:
-                System.out.println("You chose a LARGE!");
-                break;
-            case 2:
-                System.out.println("You chose a MEDIUM!");
-                break;
-            case 1:
-                System.out.println("You chose a SMALL!");
-                break;
-            default:
-                System.out.println("Your must choose a cup size from 1 (smallest) to 3 (largest)");
-        }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof IceCream)) return false;
+        IceCream iceCream = (IceCream) o;
+        return getWeight() == iceCream.getWeight() && Double.compare(iceCream.getPrice(), getPrice()) == 0 && getConeSize() == iceCream.getConeSize() && Objects.equals(getFlavor(), iceCream.getFlavor());
     }
 
-    public String describe() {
-        return "Please pay " + this.price + " for " + this.weight + " ounces " + " of " + this.flavor + " ice cream!";
+    @Override
+    public int hashCode() {
+        return Objects.hash(getFlavor(), getWeight(), getPrice(), getConeSize());
     }
 
     @Override
@@ -90,7 +100,7 @@ public class IceCream {
                 "flavor='" + flavor + '\'' +
                 ", weight=" + weight +
                 ", price=" + price +
-                ", cupSize=" + cupSize +
+                ", coneSize=" + coneSize +
                 '}';
     }
 }
