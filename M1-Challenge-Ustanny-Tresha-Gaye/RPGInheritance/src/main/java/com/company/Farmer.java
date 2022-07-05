@@ -34,11 +34,12 @@ public class Farmer extends Character {
         }
     }
 
-    public void farmFresh() {
+    public int farmFresh() {
         if (harvesting) {
             health += 3;
             stamina += 5;
         }
+        return health & stamina;
     }
 
     public void arrested() {
