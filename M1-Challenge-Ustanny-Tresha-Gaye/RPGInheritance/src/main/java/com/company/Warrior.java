@@ -6,22 +6,16 @@ public class Warrior extends Character {
 
     protected int shieldStrength;
 
-    public Warrior(String name, int strength, int health, int stamina, int speed, int attackPower, boolean running, boolean arrested, int shieldStrength) {
-        super(name, strength, health, stamina, speed, attackPower, running, arrested);
-        this.name = name;
-        this.strength = 75;
-        this.health = 100;
-        this.stamina = 100;
-        this.speed = 50;
-        this.attackPower = 10;
-        this.running = false;
-        this.arrested = false;
+    public Warrior(){
+        name = "";
+        strength = 75;
+        health = 100;
+        stamina = 100;
+        speed = 50;
+        attackPower = 10;
+        running = false;
+        arrested = false;
         this.shieldStrength = shieldStrength;
-
-    }
-
-    public Warrior() {
-
     }
 
     public int getShieldStrength() {

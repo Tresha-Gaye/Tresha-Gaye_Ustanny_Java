@@ -4,26 +4,22 @@ import java.util.Objects;
 
 public class Constable extends Character {
 
-    protected String jurisdiction;
+    protected boolean jurisdiction;
 
     protected int arrestPoints;
-    public Constable(String name, int strength, int health, int stamina, int speed, int attackPower, boolean running, boolean arrested, String jurisdiction, int arrestPoints) {
-        super(name, strength, health, stamina, speed, attackPower, running, arrested);
-        this.name = name;
-        this.strength = 60;
-        this.health = 100;
-        this.stamina = 60;
-        this.speed = 20;
-        this.attackPower = 5;
-        this.running = false;
-        this.arrested = false;
-        this.jurisdiction = jurisdiction;
-        this.arrestPoints = arrestPoints;
-    }
-
     public Constable() {
-
+        name = "";
+        strength = 60;
+        health = 100;
+        stamina = 60;
+        speed = 20;
+        attackPower = 5;
+        running = false;
+        arrested = false;
+        arrestPoints = 10;
+        this.jurisdiction = false;
     }
+
 
     public void arrestAnotherCharacter() {
         System.out.println(this.getName() + " says: You are under arrest!");

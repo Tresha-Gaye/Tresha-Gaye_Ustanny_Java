@@ -8,22 +8,17 @@ public class Farmer extends Character {
 
     protected boolean harvesting;
 
-    public Farmer(String name, int strength, int health, int stamina, int speed, int attackPower, boolean running, boolean arrested, boolean plowing, boolean harvesting) {
-        super(name, strength, health, stamina, speed, attackPower, running, arrested);
-        this.name = name;
-        this.strength = 75;
-        this.health = 100;
-        this.stamina = 75;
-        this.speed = 10;
-        this.attackPower = 1;
-        this.running = false;
-        this.arrested = false;
-        this.plowing = plowing;
-        this.harvesting = harvesting;
-    }
-
     public Farmer() {
-
+        name = "";
+        strength= 75;
+        health= 75;
+        stamina= 75;
+        speed= 10;
+        attackPower= 1;
+        running= false;
+        arrested= false;
+        this.plowing = false;
+        this.harvesting = false;
     }
 
     public int getStrength() {
@@ -31,7 +26,7 @@ public class Farmer extends Character {
     }
 
     public void setStrength(int strength) {
-        this.strength = strength;
+        this.strength = 75;
     }
 
     public int getHealth() {
@@ -39,7 +34,7 @@ public class Farmer extends Character {
     }
 
     public void setHealth(int health) {
-        this.health = health;
+        this.health = 100;
     }
 
     public int getStamina() {
@@ -47,7 +42,7 @@ public class Farmer extends Character {
     }
 
     public void setStamina(int stamina) {
-        this.stamina = stamina;
+        this.stamina = 75;
     }
 
     public int getSpeed() {
@@ -55,7 +50,7 @@ public class Farmer extends Character {
     }
 
     public void setSpeed(int speed) {
-        this.speed = speed;
+        this.speed = 10;
     }
 
     public int getAttackPower() {
@@ -63,7 +58,7 @@ public class Farmer extends Character {
     }
 
     public void setAttackPower(int attackPower) {
-        this.attackPower = attackPower;
+        this.attackPower = 1;
     }
 
     public boolean isRunning() {
@@ -71,7 +66,7 @@ public class Farmer extends Character {
     }
 
     public void setRunning(boolean running) {
-        this.running = running;
+        this.running = false;
     }
 
     public boolean isArrested() {
@@ -79,7 +74,7 @@ public class Farmer extends Character {
     }
 
     public void setArrested(boolean arrested) {
-        this.arrested = arrested;
+        this.arrested = false;
     }
 
     public boolean isPlowing() {
@@ -87,7 +82,7 @@ public class Farmer extends Character {
     }
 
      public void setPlowing(boolean plowing) {
-        this.plowing = plowing;
+        this.plowing = false;
     }
 
     public boolean isHarvesting() {
@@ -95,7 +90,7 @@ public class Farmer extends Character {
     }
 
     public void setHarvesting(boolean harvesting) {
-        this.harvesting = harvesting;
+        this.harvesting = false;
     }
 
     public void attackAnotherCharacter() {
