@@ -3,7 +3,6 @@ package com.company.factory;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -54,10 +53,13 @@ public class IceCreamTest {
         assertEquals(expectedOutput, actualOutput);
     }
 
-//    @Test
-//    public void shouldReturnOneIngredientFromArrayList() {
-//        List<String> expectedOutput = Arrays.asList("sugar", "milk", "egg yolks", "heavy cream");
-//        List<String> actualOutput = factory.ingredientList.get(0);
-//        assertEquals(expectedOutput, actualOutput);
-//    }
+    @Test
+    public void shouldReturnOneIngredientElementFromArrayList() {
+        List<String> newList = Arrays.asList("sugar", "milk", "egg yolks", "heavy cream");
+
+        String expectedOutput = "milk";
+        String actualOutput = factory.ingredientList().get(1);
+        assertEquals(expectedOutput, actualOutput);
+    }
+
 }

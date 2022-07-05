@@ -1,7 +1,5 @@
 package com.company.factory;
 
-import com.sun.xml.internal.ws.api.model.wsdl.WSDLOutput;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -49,25 +47,11 @@ public class IceCream {
         this.productionTime = productionTime;
     }
 
-//    public void speedProduction() {
-//        // rush orders reduce production time by 12 hours
-//        productionTime = productionTime - 12;
-//        System.out.println("The order was just rushed! Now we have " + this.productionTime
-//                + " hours to make " + this.quantity
-//                + " gallons of ice cream!");
-//    }
-
-//    public int speedProduction() {
-//       int newTime = this.getProductionTime() - 12;
-//        return newTime;
-//    }
-
     public int speedProduction(int productionTime) {
         int rushTime= productionTime - 12;
         System.out.println("Now we have " + rushTime + " hours to complete this order!");
         return rushTime;
     }
-
 
     public double discountOrder(int quantity, double costPerOrder) {
         // cost per gallon = $10.00
@@ -95,7 +79,9 @@ public class IceCream {
         ingredientList.add("milk");
         ingredientList.add("egg yolks");
         ingredientList.add("heavy cream");
-        System.out.println("The basic ingredients for ice cream are: " + ingredientList);
+
+        System.out.println("The number of items on this list are: " + ingredientList.size());
+        System.out.println("This is our list of ingredients " + ingredientList);
         return ingredientList;
     }
     @Override

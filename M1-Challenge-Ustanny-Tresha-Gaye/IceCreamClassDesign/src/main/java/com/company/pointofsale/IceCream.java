@@ -28,22 +28,6 @@ public class IceCream {
         return coneSize;
     }
 
-    public void setConeSize(int coneSize) {
-        switch (coneSize) {
-            case 1:
-                System.out.println("Our customer ordered a SMALL cone!");
-                break;
-            case 2:
-                System.out.println("Our customer ordered a MEDIUM cone!");
-                break;
-            case 3:
-                System.out.println("Our customer ordered a LARGE cone!");
-                break;
-            default:
-                System.out.println("Tell the customer to choose a cone size from 1 (smallest) to 3 (largest)");
-        }
-    }
-
     public String getFlavor() {
         return flavor;
     }
@@ -52,7 +36,7 @@ public class IceCream {
         this.flavor = flavor;
     }
 
-    public double getWeight() {
+    public int getWeight() {
         return weight;
     }
 
@@ -68,18 +52,39 @@ public class IceCream {
         this.price = price;
     }
 
-    public void calculatePrice() {
-        double costPerOunce = 0.90;
-        price = costPerOunce * weight;
-        System.out.println("Please pay " + this.getPrice() + " dollars for " + this.getWeight() + " ounces of " + this.flavor + " ice cream!");
+    public String setConeSize(int coneSize) {
+
+        switch (coneSize) {
+            case 1:
+                System.out.println("Our customer ordered a small cone!");
+                return "SMALL";
+            case 2:
+                System.out.println("Our customer ordered a medium cone!");
+                return "MEDIUM";
+            case 3:
+                System.out.println("Our customer ordered a large cone!");
+                return "LARGE";
+            default:
+                System.out.println("Tell the customer to choose a cone size from 1 (smallest) to 3 (largest)");
+        }
+        return "";
+    }
+    public double calculatePrice(double unitPrice, int weight) {
+        price = unitPrice * weight;
+        System.out.println("Please pay " + price + " dollar(s) for " + weight + " ounces of ice cream!");
+        return price;
     }
 
-    public void upSize() {
-        weight += 3;
-        coneSize++;
-        System.out.println("Our customer chose a bigger cone!");
-        calculatePrice();
+
+    public int upSize(int weight) {
+        boolean morePlease = true;
+        if (morePlease) {
+            System.out.println("Here's an extra scoop!");
+            return weight + 3;
+        }
+        return getWeight();
     }
+
 
     @Override
     public boolean equals(Object o) {

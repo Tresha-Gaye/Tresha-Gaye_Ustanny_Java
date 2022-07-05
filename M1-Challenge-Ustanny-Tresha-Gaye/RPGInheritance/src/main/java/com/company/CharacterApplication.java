@@ -44,7 +44,7 @@ public class CharacterApplication {
         warrior1.setRunning(false);
         warrior1.setArrested(false);
 
-        warrior1.attackAnotherCharacter();
+        warrior1.attackAnotherCharacter(20, "John");
         System.out.println(warrior1);
 
     }

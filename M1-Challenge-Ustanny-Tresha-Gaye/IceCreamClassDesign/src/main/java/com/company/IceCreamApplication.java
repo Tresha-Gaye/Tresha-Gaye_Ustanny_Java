@@ -13,23 +13,13 @@ public class IceCreamApplication {
         System.out.println("<======== Making magic in an ICE CREAM FACTORY =======>");
         System.out.println();
 
-//        ArrayList<String> ingredientList = new ArrayList<>();
-//        ingredientList.add("sugar");
-//        ingredientList.add("milk");
-//        ingredientList.add("egg yolks");
-//        ingredientList.add("heavy cream");
-//        System.out.println("The basic ingredients for ice cream are: " + ingredientList);
-//        System.out.println();
-
         customerOrder1.ingredientList();
-//        ingredientList = new ArrayList<>();
-//        moreIngredients.add("vanilla");
+
 
         customerOrder1.setQuantity(50);
         customerOrder1.setProductionTime(24);
 
         System.out.println("We have " + customerOrder1.getProductionTime() + " hours to produce this order for " + customerOrder1.getQuantity() + " gallons of ice cream!");
-//        System.out.println("We need to get more ingredients from our suppliers. Here's the list: " + ingredientList + "!");
 
         System.out.println();
         System.out.println("<======== These are the factory methods =======>");
@@ -46,8 +36,8 @@ public class IceCreamApplication {
         sweetTooth.setFlavor("strawberry-banana");
         sweetTooth.setConeSize(1);
         sweetTooth.setWeight(3);
-        sweetTooth.calculatePrice();;
-        sweetTooth.upSize();
+//        sweetTooth.calculatePrice();;
+        sweetTooth.upSize(3);
 
         System.out.println();
 

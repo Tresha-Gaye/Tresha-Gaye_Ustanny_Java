@@ -1,6 +1,8 @@
 package com.company;
 
-public abstract class Characteristics {
+import java.util.Objects;
+
+public abstract class Character {
     protected String name;
 
     protected int strength;
@@ -17,7 +19,20 @@ public abstract class Characteristics {
 
     protected boolean arrested;
 
-    public int attackPoints;
+    public Character(String name, int strength, int health, int stamina, int speed, int attackPower, boolean running, boolean arrested) {
+        this.name = name;
+        this.strength = strength;
+        this.health = health;
+        this.stamina = stamina;
+        this.speed = speed;
+        this.attackPower = attackPower;
+        this.running = running;
+        this.arrested = arrested;
+    }
+
+    public Character() {
+
+    }
 
     public String getName() {
         return name;
@@ -83,17 +98,22 @@ public abstract class Characteristics {
         this.arrested = arrested;
     }
 
-    public int getAttackPoints() {
-        return attackPoints;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Character)) return false;
+        Character character = (Character) o;
+        return getStrength() == character.getStrength() && getHealth() == character.getHealth() && getStamina() == character.getStamina() && getSpeed() == character.getSpeed() && getAttackPower() == character.getAttackPower() && isRunning() == character.isRunning() && isArrested() == character.isArrested() && Objects.equals(getName(), character.getName());
     }
 
-    public void setAttackPoints(int attackPoints) {
-        this.attackPoints = attackPoints;
+    @Override
+    public int hashCode() {
+        return Objects.hash(getName(), getStrength(), getHealth(), getStamina(), getSpeed(), getAttackPower(), isRunning(), isArrested());
     }
 
     @Override
     public String toString() {
-        return "Characteristics{" +
+        return "Character{" +
                 "name='" + name + '\'' +
                 ", strength=" + strength +
                 ", health=" + health +
@@ -102,11 +122,6 @@ public abstract class Characteristics {
                 ", attackPower=" + attackPower +
                 ", running=" + running +
                 ", arrested=" + arrested +
-                ", attackPoints=" + attackPoints +
                 '}';
     }
-
-    public abstract void attackAnotherCharacter();
-
-//    public abstract void attackPower(int i);
 }

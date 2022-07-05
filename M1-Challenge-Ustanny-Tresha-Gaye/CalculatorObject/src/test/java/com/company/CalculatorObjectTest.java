@@ -105,27 +105,6 @@ public class CalculatorObjectTest {
         assertEquals(expectedOutput, actualOutput);
     }
 
-
-
-//    @Test
-//    public void shouldThrowErrorIfDividendIsZero() {
-//
-//        String failMessage = "Expected calculator to handle long division.";
-//        assertEquals(failMessage, 0, calculator.divide((int) 2, (int) 0));
-//
-//            int expectedOutput = 0;
-//            int actualOutput = String.valueOf(calculator.divide(32, 0));
-//            assertEquals(expectedOutput, actualOutput);
-//
-//            expectedOutput = "Error: you cannot divide an integer by zero";
-//            actualOutput = String.valueOf(calculator.divide(0, 19));
-//            assertEquals(expectedOutput, actualOutput);
-
-//    }
-
-    // doubles tests - add, subtract, multiply divide
-    // positive & negative & mixed doubles
-
     @Test
     public void shouldAddTwoDoublesAndReturnSum() {
         double delta = 1e-4; // 0.0001 - got this suggestion for delta from https://coderanch.com/t/94967/engineering/jUnit-assert-delta
