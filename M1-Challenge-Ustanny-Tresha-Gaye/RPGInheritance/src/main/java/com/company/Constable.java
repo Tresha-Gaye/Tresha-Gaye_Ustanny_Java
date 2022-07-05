@@ -32,11 +32,11 @@ public class Constable extends Character {
         health = health - 10;
     }
 
-    public String getJurisdiction() {
+    public boolean getJurisdiction() {
         return jurisdiction;
     }
 
-    public void setJurisdiction(String jurisdiction) {
+    public void setJurisdiction(boolean jurisdiction) {
         this.jurisdiction = jurisdiction;
     }
 

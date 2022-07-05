@@ -21,6 +21,34 @@ public class Farmer extends Character {
         this.harvesting = false;
     }
 
+    // methods //
+    public void attackAnotherCharacter() {
+        System.out.println(this.getName() + " says: You are under attack!");
+        attackPower++;
+    }
+
+    public void farmWork() {
+        if (plowing) {
+            strength += 5;
+            speed += 2;
+        }
+    }
+
+    public void farmFresh() {
+        if (harvesting) {
+            health += 3;
+            stamina += 5;
+        }
+    }
+
+    public void arrested() {
+        if (arrested) {
+            speed = 0;
+            running = false;
+        }
+    }
+
+    // setters & getters //
     public int getStrength() {
         return strength;
     }
@@ -93,10 +121,7 @@ public class Farmer extends Character {
         this.harvesting = false;
     }
 
-    public void attackAnotherCharacter() {
-        System.out.println(this.getName() + " says: You are under attack!");
-        attackPower++;
-    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
