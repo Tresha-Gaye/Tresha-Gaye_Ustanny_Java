@@ -11,15 +11,26 @@ public class WarriorTest {
     public void shouldIncreaseAttackPowerWhenWarriorAttacksAnotherCharacter() {
 
         Warrior warrior = new Warrior();
-        warrior.setShieldStrength(10);
+        warrior.setName("Ron");
+        warrior.setAttackPower(10);
 
-        int expectedOutput = 25;
+        int expectedOutput = 15;
         int actualOutput = warrior.attackAnotherCharacter("Jim");
 
-//        expectedOutput = 4.5;
-//        actualOutput = shop.calculatePrice(0.5, 9);
+        assertEquals(expectedOutput, actualOutput);
+    }
 
-        assertEquals(expectedOutput, actualOutput, 0.0001);
+    @Test
+    public void shouldDecreaseShieldStrengthIfArrested() {
+
+        Warrior warrior = new Warrior();
+        warrior.setName("Ron");
+        warrior.setShieldStrength(10);
+
+        int expectedOutput = 5;
+        int actualOutput = warrior.resistArrest();
+
+        assertEquals(expectedOutput, actualOutput);
     }
 
 }

@@ -25,13 +25,20 @@ public class Warrior extends GameCharacter {
     // methods
 
     public int attackAnotherCharacter(String character) {
-        // if warrior attack another character
+        // if warrior attacks another character
         // warrior attackPower increases, strength decreases
         // other character health decreases
         attackPower += 5;
+
         System.out.println(this.name + " says: You are under attack, " + character + " !");
 
-                return attackPower;
+        return attackPower;
+    }
+
+    public int resistArrest() {
+        if (arrested == false) {
+            shieldStrength = shieldStrength/2;
+        } return shieldStrength;
     }
 
 

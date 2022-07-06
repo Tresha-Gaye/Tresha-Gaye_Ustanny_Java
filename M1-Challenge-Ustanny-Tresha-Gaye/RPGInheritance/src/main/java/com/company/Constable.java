@@ -34,13 +34,14 @@ public class Constable extends GameCharacter {
         return stamina;
     }
 
-    public String jurisdiction(String state) {
-        boolean authority = false;
-        if(state.equals("CT") || state.equals("MA")){
-            System.out.println(this.name + "says: You're in my jurisdiction, buddy!");
-        } else {
+    public String canArrest(String state) {
 
+        if(state.equals("CT") || state.equals("MA")){
+            System.out.println(this.name + "says: You're in my jurisdiction, I am authorized to arrest you!!");
+            return "You have arrest authority";
+//            strength += 20;
         }
+        return "Error: Out of jurisdiction";
     }
 
     // intellisense generated code

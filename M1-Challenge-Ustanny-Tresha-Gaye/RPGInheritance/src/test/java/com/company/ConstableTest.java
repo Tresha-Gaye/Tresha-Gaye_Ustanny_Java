@@ -21,14 +21,28 @@ public class ConstableTest {
     }
 
     @Test
-    public void shouldSpecifyConstableJurisdiction() {
+    public void shouldAllowConstableToMakeArrestIfWithinJurisdiction() {
 
         Constable constable = new Constable();
         constable.setName("Jon Snow");
-        constable.setStamina(25);
 
-        int expectedOutput = 35;
-        int actualOutput = constable.arrestAnotherCharacter("Jim");
+        String expectedOutput = "You have arrest authority";
+        String actualOutput = constable.canArrest("CT");
+
+
+        assertEquals(expectedOutput, actualOutput);
+    }
+
+    @Test
+    public void shouldReturnErrorMessageIfNotWithinJurisdiction() {
+
+        Constable constable = new Constable();
+        constable.setName("Jon Snow");
+        constable.setStrength(20);
+
+
+        String expectedOutput = "Error: Out of jurisdiction";
+        String actualOutput = constable.canArrest("PA");
 
         assertEquals(expectedOutput, actualOutput);
     }
