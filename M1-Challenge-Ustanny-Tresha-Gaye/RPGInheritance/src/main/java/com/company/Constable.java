@@ -34,9 +34,12 @@ public class Constable extends Character {
         return stamina;
     }
 
-    public String jurisdiction(String state, boolean authority) {
+    public String jurisdiction(String state) {
+        boolean authority;
         if (state.equals("CT") || state.equals("MA")){
-            
+            authority == true;
+        } else {
+authority
         }
     }
 
