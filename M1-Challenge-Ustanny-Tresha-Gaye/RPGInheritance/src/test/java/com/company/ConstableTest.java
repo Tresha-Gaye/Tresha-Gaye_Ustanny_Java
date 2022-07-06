@@ -21,7 +21,7 @@ public class ConstableTest {
     }
 
     @Test
-    public void shouldSpecifyConstableJuristiction() {
+    public void shouldSpecifyConstableJurisdiction() {
 
         Constable constable = new Constable();
         constable.setName("Jon Snow");
