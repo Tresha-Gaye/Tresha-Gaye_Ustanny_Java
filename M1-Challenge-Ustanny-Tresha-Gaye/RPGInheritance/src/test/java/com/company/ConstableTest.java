@@ -7,28 +7,30 @@ import static org.junit.Assert.*;
 
 public class ConstableTest {
 
+    @Test
+    public void shouldIncreaseStaminaWhenConstableMakesArrest() {
 
-    private Warrior warrior;
-    private Farmer farmer;
-    private Constable constable;
+        Constable constable = new Constable();
+        constable.setName("Jon Snow");
+        constable.setStamina(25);
 
-    @Before
-    public void setUp() {
-        warrior = new Warrior();
-        farmer = new Farmer();
-        constable = new Constable();
+        int expectedOutput = 35;
+        int actualOutput = constable.arrestAnotherCharacter("Jim");
+
+        assertEquals(expectedOutput, actualOutput);
     }
 
     @Test
-    public void shouldIncreaseAttackPowerWhenWarriorAttacksAnotherCharacter() {
-//        int attackPower = 20;
-        int expectedOutput = 25;
-        int actualOutput = warrior.attackAnotherCharacter(20, "John");
+    public void shouldSpecifyConstableJuristiction() {
 
-//        expectedOutput = 4.5;
-//        actualOutput = shop.calculatePrice(0.5, 9);
+        Constable constable = new Constable();
+        constable.setName("Jon Snow");
+        constable.setStamina(25);
 
-        assertEquals(expectedOutput, actualOutput, 0.0001);
+        int expectedOutput = 35;
+        int actualOutput = constable.arrestAnotherCharacter("Jim");
+
+        assertEquals(expectedOutput, actualOutput);
     }
 
 }

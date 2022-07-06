@@ -5,10 +5,10 @@ import java.util.Objects;
 public class Constable extends Character {
 
     protected String jurisdiction;
-    // this should be a String
 
+    // generic constructor
     public Constable(String name, int strength, int health, int stamina, int speed, int attackPower, boolean running, boolean arrested, String jurisdiction) {
-        super(name, 60, 100, 60, 20, 5, false, false);
+        super(name, strength, health, stamina, speed, attackPower, running, arrested);
         this.jurisdiction = jurisdiction;
     }
 
@@ -16,22 +16,29 @@ public class Constable extends Character {
 
     }
 
+    // constructor with initial values
     public Constable(String name, String jurisdiction) {
-        this.name = name;
+        super(name, 60, 100, 60, 20, 5, false, false);
         this.jurisdiction = jurisdiction;
     }
 
+    // methods
 
     public void arrestAnotherCharacter() {
         System.out.println(this.getName() + " says: You are under arrest!");
     }
 
-        public void attackAnotherCharacter () {
-            System.out.println(this.getName() + " says: You are under attack!");
-            attackPower = attackPower + 5;
-            health = health - 10;
-        }
+    public int arrestAnotherCharacter (String character) {
+        System.out.println(this.name + " says: Stop in the name of the law! " + character + ", you are under arrest!");
+        stamina = stamina + 10;
+        return stamina;
+    }
 
+    public String jurisdiction(String State, boolean authority) {
+
+    }
+
+    // intellisense generated code
     public String getJurisdiction() {
         return jurisdiction;
     }

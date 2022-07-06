@@ -6,17 +6,36 @@ public class Warrior extends Character {
 
     protected int shieldStrength;
 
-    public Warrior(){
-        name = "";
-        strength = 75;
-        health = 100;
-        stamina = 100;
-        speed = 50;
-        attackPower = 10;
-        running = false;
-        arrested = false;
+    // generic constructor
+    public Warrior(String name, int strength, int health, int stamina, int speed, int attackPower, boolean running, boolean arrested, int shieldStrength) {
+        super(name, strength, health, stamina, speed, attackPower, running, arrested);
         this.shieldStrength = shieldStrength;
     }
+
+    public Warrior() {
+
+    }
+
+    // constructor with initial values
+    public Warrior(String name, int shieldStrength) {
+        super(name, 75, 100, 100, 50, 10, false, false);
+        this.shieldStrength = shieldStrength;
+    }
+
+    // methods
+
+    public int attackAnotherCharacter(String character) {
+        // if warrior attack another character
+        // warrior attackPower increases, strength decreases
+        // other character health decreases
+        attackPower += 5;
+        System.out.println(this.name + " says: You are under attack, " + character + " !");
+
+                return attackPower;
+    }
+
+
+    // intellisense generated code
 
     public int getShieldStrength() {
         return shieldStrength;
@@ -25,18 +44,6 @@ public class Warrior extends Character {
     public void setShieldStrength(int shieldStrength) {
         this.shieldStrength = shieldStrength;
     }
-
-    public int attackAnotherCharacter(int attackPower, String name) {
-        // if warrior attack another character
-        // warrior attackPower increases, strength decreases
-        // other character health decreases
-        name = this.getName();
-        attackPower += 5;
-        System.out.println(this.name + " says: You are under attack, " + this.getName() + " !");
-
-                return attackPower;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

@@ -8,110 +8,52 @@ public class Farmer extends Character {
 
     protected boolean harvesting;
 
+    // generic constructor
+    public Farmer(String name, int strength, int health, int stamina, int speed, int attackPower, boolean running, boolean arrested, boolean plowing, boolean harvesting) {
+        super(name, strength, health, stamina, speed, attackPower, running, arrested);
+        this.plowing = plowing;
+        this.harvesting = harvesting;
+    }
+
+    // constructor with initial values
+    public Farmer(String name, boolean plowing, boolean harvesting) {
+        super(name, 75, 75, 75, 10, 1, false, false);
+        this.plowing = plowing;
+        this.harvesting = harvesting;
+    }
+
     public Farmer() {
-        name = "";
-        strength= 75;
-        health= 75;
-        stamina= 75;
-        speed= 10;
-        attackPower= 1;
-        running= false;
-        arrested= false;
-        this.plowing = false;
-        this.harvesting = false;
-    }
 
+    }
     // methods //
-    public void attackAnotherCharacter() {
-        System.out.println(this.getName() + " says: You are under attack!");
-        attackPower++;
-    }
 
-    public void farmWork() {
-        if (plowing) {
-            strength += 5;
-            speed += 2;
+    public int gotAttacked(String character) {
+        boolean attacked = true;
+        if (attacked) {
+            strength -= 5;
         }
-    }
-
-    public int farmFresh() {
-        if (harvesting) {
-            health += 3;
-            stamina += 5;
-        }
-        return health & stamina;
-    }
-
-    public void arrested() {
-        if (arrested) {
-            speed = 0;
-            running = false;
-        }
-    }
-
-    // setters & getters //
-    public int getStrength() {
+        System.out.println(this.name + " says: Oh no! We're under attack by " + character + " !");
+        System.out.println(this.name + " now has " + this.strength + " health!");
         return strength;
     }
 
-    public void setStrength(int strength) {
-        this.strength = 75;
+
+    public int farmFresh() {
+        boolean harvesting = true;
+        if(harvesting) {
+            health += 3;
+        }
+       return health ;
     }
 
-    public int getHealth() {
-        return health;
-    }
-
-    public void setHealth(int health) {
-        this.health = 100;
-    }
-
-    public int getStamina() {
-        return stamina;
-    }
-
-    public void setStamina(int stamina) {
-        this.stamina = 75;
-    }
-
-    public int getSpeed() {
-        return speed;
-    }
-
-    public void setSpeed(int speed) {
-        this.speed = 10;
-    }
-
-    public int getAttackPower() {
-        return attackPower;
-    }
-
-    public void setAttackPower(int attackPower) {
-        this.attackPower = 1;
-    }
-
-    public boolean isRunning() {
-        return running;
-    }
-
-    public void setRunning(boolean running) {
-        this.running = false;
-    }
-
-    public boolean isArrested() {
-        return arrested;
-    }
-
-    public void setArrested(boolean arrested) {
-        this.arrested = false;
-    }
+    // intellisense generated code
 
     public boolean isPlowing() {
         return plowing;
     }
 
-     public void setPlowing(boolean plowing) {
-        this.plowing = false;
+    public void setPlowing(boolean plowing) {
+        this.plowing = plowing;
     }
 
     public boolean isHarvesting() {
@@ -119,9 +61,8 @@ public class Farmer extends Character {
     }
 
     public void setHarvesting(boolean harvesting) {
-        this.harvesting = false;
+        this.harvesting = harvesting;
     }
-
 
     @Override
     public boolean equals(Object o) {
