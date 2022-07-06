@@ -2,7 +2,7 @@ package com.company;
 
 import java.util.Objects;
 
-public class Farmer extends Character {
+public class Farmer extends GameCharacter {
 
     protected boolean plowing;
 

@@ -2,7 +2,7 @@ package com.company;
 
 import java.util.Objects;
 
-public class Warrior extends Character {
+public class Warrior extends GameCharacter {
 
     protected int shieldStrength;
 

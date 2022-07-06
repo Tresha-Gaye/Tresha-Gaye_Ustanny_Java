@@ -2,7 +2,7 @@ package com.company;
 
 import java.util.Objects;
 
-public class Constable extends Character {
+public class Constable extends GameCharacter {
 
     protected String jurisdiction;
 
@@ -35,11 +35,11 @@ public class Constable extends Character {
     }
 
     public String jurisdiction(String state) {
-        boolean authority;
-        if (state.equals("CT") || state.equals("MA")){
-            authority == true;
+        boolean authority = false;
+        if(state.equals("CT") || state.equals("MA")){
+            System.out.println(this.name + "says: You're in my jurisdiction, buddy!");
         } else {
-authority
+
         }
     }
 

@@ -2,7 +2,7 @@ package com.company;
 
 import java.util.Objects;
 
-public abstract class Character {
+public abstract class GameCharacter {
     protected String name;
 
     protected int strength;
@@ -19,7 +19,7 @@ public abstract class Character {
 
     protected boolean arrested;
 
-    public Character(String name, int strength, int health, int stamina, int speed, int attackPower, boolean running, boolean arrested) {
+    public GameCharacter(String name, int strength, int health, int stamina, int speed, int attackPower, boolean running, boolean arrested) {
         this.name = name;
         this.strength = strength;
         this.health = health;
@@ -30,7 +30,7 @@ public abstract class Character {
         this.arrested = arrested;
     }
 
-    public Character() {
+    public GameCharacter() {
 
     }
 
@@ -101,8 +101,8 @@ public abstract class Character {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Character)) return false;
-        Character character = (Character) o;
+        if (!(o instanceof GameCharacter)) return false;
+        GameCharacter character = (GameCharacter) o;
         return getStrength() == character.getStrength() && getHealth() == character.getHealth() && getStamina() == character.getStamina() && getSpeed() == character.getSpeed() && getAttackPower() == character.getAttackPower() && isRunning() == character.isRunning() && isArrested() == character.isArrested() && Objects.equals(getName(), character.getName());
     }
 
@@ -113,7 +113,7 @@ public abstract class Character {
 
     @Override
     public String toString() {
-        return "Character{" +
+        return "GameCharacter{" +
                 "name='" + name + '\'' +
                 ", strength=" + strength +
                 ", health=" + health +
