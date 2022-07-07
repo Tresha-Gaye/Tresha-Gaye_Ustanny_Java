@@ -14,32 +14,34 @@ public class MonthConverterController {
 
         switch (monthNumber) {
             case "1":
-                return "January";
+                return "1-January";
             case "2":
-                return "February";
+                return "2-February";
             case "3":
-                return "March";
+                return "3-March";
             case "4":
-                return "April";
+                return "4-April";
             case "5":
-                return "May";
+                return "5-May";
             case "6":
-                return "June";
+                return "6-June";
             case "7":
-                return "July";
+                return "7-July";
             case "8":
-                return "August";
+                return "8-August";
             case "9":
-                return "September";
+                return "9-September";
             case "10":
-                return "October";
+                return "10-October";
             case "11":
-                return "November";
+                return "11-November";
             case "12":
-                return "December";
+                return "12-December";
             default:
                 throw new ResponseStatusException(HttpStatus.UNPROCESSABLE_ENTITY, "Invalid Month Number Specified");
         }
     }
 }
+
+
 
