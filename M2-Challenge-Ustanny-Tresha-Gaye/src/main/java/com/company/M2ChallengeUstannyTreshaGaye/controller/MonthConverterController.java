@@ -29,23 +29,26 @@ public class MonthConverterController {
             new Month("December", 12)
     ));
 
+    // GET month number
 
     @RequestMapping(value = "/month/{monthNumber}", method = RequestMethod.GET)
     @ResponseStatus(value = HttpStatus.OK)
     public Month getMonthByMonthNumber(@PathVariable int monthNumber) {
 
-            Month found = null;
+            Month foundMonth = null;
 
-            for(Month month : monthList) {
-                if(month.getNumber() == monthNumber) {
-                    found = month;
+            for(Month m : monthList) {
+                if(m.getNumber() == monthNumber) {
+                    foundMonth = m;
                     break;
                 }
             }
 
-            return found;
-        }
+            return foundMonth;
+    }
 
+
+    // GET random month
 
     @RequestMapping(value = "/randomMonth", method = RequestMethod.GET)
     @ResponseStatus(value = HttpStatus.OK)
