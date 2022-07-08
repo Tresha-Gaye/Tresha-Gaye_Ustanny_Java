@@ -16,22 +16,36 @@ public class MathSolution {
 
     // operation methods
 
-    public int add(int operand1, int operand2){
-        answer = operand1 + operand2;
+//    public int add(int operand1, int operand2){
+//        answer = operand1 + operand2;
+//        return answer;
+//    }
+
+    public int add() {
+        if(operation.equals("add")){
+            answer = operand1 + operand2;
+        };
         return answer;
     }
+
     public int subtract(){
-        answer = operand1 - operand2;
+        if(operation.equals("subtract")){
+            answer = operand1 - operand2;
+        };
         return answer;
     }
 
     public int multiply(){
-        answer = operand1 * operand2;
+        if(operation.equals("multiply")){
+            answer = operand1 * operand2;
+        };
         return answer;
     }
 
     public int divide(){
-        answer = operand1 / operand2;
+        if(operation.equals("divide")){
+            answer = operand1 / operand2;
+        };
         return answer;
     }
 
