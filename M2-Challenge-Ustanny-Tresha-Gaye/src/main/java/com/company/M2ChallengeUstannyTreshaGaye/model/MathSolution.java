@@ -14,12 +14,26 @@ public class MathSolution {
 
     private int answer;
 
+    // constructor
+
+    public MathSolution(int operand1, int operand2, String operation, int answer) {
+        this.operand1 = operand1;
+        this.operand2 = operand2;
+        this.operation = operation;
+        this.answer = answer;
+    }
+
+    public MathSolution(int operand1, int operand2) {
+        this.operand1 = operand1;
+        this.operand2 = operand2;
+    }
+
+    public MathSolution() {
+
+    }
+
     // operation methods
 
-//    public int add(int operand1, int operand2){
-//        answer = operand1 + operand2;
-//        return answer;
-//    }
 
     public int add() {
         if(operation.equals("add")){
@@ -42,9 +56,11 @@ public class MathSolution {
         return answer;
     }
 
-    public int divide(){
-        if(operation.equals("divide")){
+    public int divide() throws Exception {
+        if(operation.equals("divide") && operand2 != 0){
             answer = operand1 / operand2;
+        } else {
+            throw new Exception("ArithmeticException");
         };
         return answer;
     }

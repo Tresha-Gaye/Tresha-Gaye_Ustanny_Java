@@ -47,7 +47,7 @@ public class MathSolutionController {
 
     @RequestMapping(value = "/divide", method = RequestMethod.POST)
     @ResponseStatus(value = HttpStatus.CREATED)
-    public MathSolution divideMath (@RequestBody @Valid MathSolution answer) {
+    public MathSolution divideMath (@RequestBody @Valid MathSolution answer) throws Exception {
 
         answer.setOperation("divide");
         answer.divide();

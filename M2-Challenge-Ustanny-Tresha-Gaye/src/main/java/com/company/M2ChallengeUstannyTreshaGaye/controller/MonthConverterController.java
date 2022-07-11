@@ -14,7 +14,7 @@ import java.util.Random;
 @RestController
 public class MonthConverterController {
 
-    private static List<Month> monthList = new ArrayList<>(Arrays.asList(
+    private static List<Month> months = new ArrayList<>(Arrays.asList(
             new Month("January", 1),
             new Month("February", 2),
             new Month("March", 3),
@@ -35,16 +35,16 @@ public class MonthConverterController {
     @ResponseStatus(value = HttpStatus.OK)
     public Month getMonthByMonthNumber(@PathVariable int monthNumber) {
 
-            Month foundMonth = null;
+            Month specifiedMonth = null;
 
-            for(Month m : monthList) {
+            for(Month m : months) {
                 if(m.getNumber() == monthNumber) {
-                    foundMonth = m;
+                    specifiedMonth = m;
                     break;
                 }
             }
 
-            return foundMonth;
+            return specifiedMonth;
     }
 
 
@@ -57,7 +57,7 @@ public class MonthConverterController {
 
         Random randomMonthGenerator = new Random();
 
-        return monthList.get(randomMonthGenerator.nextInt(13));
+        return months.get(randomMonthGenerator.nextInt(13));
 
 
     }
