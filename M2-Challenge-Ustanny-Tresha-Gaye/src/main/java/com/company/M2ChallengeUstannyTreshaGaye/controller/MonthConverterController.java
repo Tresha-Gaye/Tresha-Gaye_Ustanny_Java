@@ -38,15 +38,17 @@ public class MonthConverterController {
 
         Month specifiedMonth = null;
 
-        if(monthNumber < 1 || monthNumber > 12){
-            throw new NotFoundException("Month not found: please enter month numbered 1 to 12");
-        }
+
 
             for(Month m : months) {
                 if(m.getNumber() == monthNumber) {
                     specifiedMonth = m;
                     break;
                 }
+            }
+
+            if(monthNumber < 1 || monthNumber > 12){
+                throw new NotFoundException("Month not found: please enter month numbered 1 to 12");
             }
 
             return specifiedMonth;
@@ -62,7 +64,6 @@ public class MonthConverterController {
         Random randomMonthGenerator = new Random();
 
         return months.get(randomMonthGenerator.nextInt(13));
-
 
     }
 }

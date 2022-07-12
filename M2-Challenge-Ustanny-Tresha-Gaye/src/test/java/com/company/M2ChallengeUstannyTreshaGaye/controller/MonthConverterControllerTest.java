@@ -70,8 +70,8 @@ public class MonthConverterControllerTest {
         mockMvc.perform(get("/randomMonth"))
                 .andDo(print())
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.number").isNotEmpty())
-                .andExpect(jsonPath("$.name").isNotEmpty());
+                .andExpect(jsonPath("$.name").isNotEmpty())
+                .andExpect(jsonPath("$.number").isNotEmpty());
     }
 
 }

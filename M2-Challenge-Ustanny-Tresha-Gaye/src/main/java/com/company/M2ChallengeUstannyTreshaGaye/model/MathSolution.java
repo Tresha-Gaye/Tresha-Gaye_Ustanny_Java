@@ -1,13 +1,17 @@
 package com.company.M2ChallengeUstannyTreshaGaye.model;
 
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.util.Objects;
 
 public class MathSolution {
 
     @NotNull(message="a number value is required")
+    @Digits(integer = 9, fraction = 0)
     private int operand1;
     @NotNull(message="a number value is required")
+    @Digits(integer = 9, fraction = 0)
     private int operand2;
 
     private String operation;
@@ -31,6 +35,7 @@ public class MathSolution {
     public MathSolution() {
 
     }
+
 
     // operation methods
 

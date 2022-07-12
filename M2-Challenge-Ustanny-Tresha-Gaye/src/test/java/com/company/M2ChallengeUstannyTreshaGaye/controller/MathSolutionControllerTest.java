@@ -1,6 +1,7 @@
 package com.company.M2ChallengeUstannyTreshaGaye.controller;
 
 import com.company.M2ChallengeUstannyTreshaGaye.model.MathSolution;
+import com.company.M2ChallengeUstannyTreshaGaye.model.Month;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Before;
 import org.junit.Test;
@@ -12,9 +13,11 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static org.junit.Assert.*;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 
 @RunWith(SpringRunner.class)
 @WebMvcTest(MathSolutionController.class)
@@ -32,88 +35,73 @@ public class MathSolutionControllerTest {
 
     }
 
-        @Test
-        public void shouldReturn422StatusCodeIfOneOperandMissing() throws Exception {
-            // ARRANGE
-            MathSolution tester = new MathSolution();
-            tester.setOperand1(2);
-            tester.setOperand2(0);
-            tester.setOperation("add");
-            tester.add();
+    @Test
+    public void shouldReturnSumOfTwoOperands() throws Exception {
+        // ARRANGE
+        MathSolution solution1 = new MathSolution(2, 2);
+        solution1.setOperation("add");
+        solution1.add();
 
-            // Convert Java Object to JSON.
-            String inputJson = mapper.writeValueAsString(tester);
+        // Convert Java Object to JSON.
+        String inputJson = mapper.writeValueAsString(solution1);
 
-            // ACT
-            mockMvc.perform(
-                            post("/add")                                    // Perform the POST request.
-                                    .content(inputJson)                               // Set the request body.
-                                    .contentType(MediaType.APPLICATION_JSON)          // Tell the server it's in JSON format.
-                    )
-                    .andDo(print())                                                     // Print results to console.
-                    .andExpect(status().isUnprocessableEntity());                       // ASSERT (status code is 422)
-        }
+        // ACT
+        mockMvc.perform(
+                        post("/add")                                    // Perform the POST request.
+                                .content(inputJson)                               // Set the request body.
+                                .contentType(MediaType.APPLICATION_JSON)          // Tell the server it's in JSON format.
+                )
+                .andDo(print())                                                     // Print results to console.
+                .andExpect(status().isCreated())
+                .andExpect(content().json("{\"operand1\":2,\"operand2\":2,\"operation\":\"add\",\"answer\":4}"));
+    }
 
-//
-//
-//        @Test
-//        public void shouldReturn422StatusCodeIfRequestBodyIsInvalid() throws Exception {
-//            Record inputRecord = new Record();
-//            inputRecord.setArtist("William Joel");
-//            inputRecord.setAlbum("The Stranger");
-//            inputRecord.setId(2);
-//
-//            String inputJson = mapper.writeValueAsString(inputRecord);
-//
-//            mockMvc.perform(
-//                            put("/records/2")
-//                                    .content(inputJson)
-//                                    .contentType(MediaType.APPLICATION_JSON)
-//                    )
-//                    .andDo(print())
-//                    .andExpect(status().isUnprocessableEntity());
-//        }
-//
-//
-//
-//        // testing POST /records
-//        @Test
-//        public void shouldReturnNewRecordOnPostRequest() throws Exception {
-//
+    @Test
+    public void shouldReturn422StatusCodeIfOperandIsNotANumber() throws Exception {
+        // ARRANGE
+        MathSolution solution1 = new MathSolution();
+//        solution1.setOperation("add");
+//        solution1.add();
+
+        // Convert Java Object to JSON.
+        String inputJson = mapper.writeValueAsString(solution1);
+
+        // ACT
+        mockMvc.perform(
+                        post("/add")                                // Perform the POST request.
+                                .content(inputJson)                               // Set the request body.
+                                .contentType(MediaType.APPLICATION_JSON)
+                                .content("{\"operand1\":\"two\",\"operand2\":2}")// Tell the server it's in JSON format.
+                )
+                .andDo(print())                                           // Print results to console.
+                .andExpect(status().isUnprocessableEntity());             // ASSERT (status code is 422)
+    }
+
+
+//    @Test
+//        public void shouldReturn422StatusCodeIfOneOperandMissing() throws Exception {
 //            // ARRANGE
-//            Record inputRecord = new Record();
-//            inputRecord.setArtist("Bruce Springsteen");
-//            inputRecord.setAlbum("The River");
-//            inputRecord.setYear("1980");
+//            MathSolution tester = new MathSolution(2, 2);
+//            tester.setOperation("add");
+//            tester.add();
 //
 //            // Convert Java Object to JSON.
-//            String inputJson = mapper.writeValueAsString(inputRecord);
-//
-//            Record outputRecord = new Record();
-//            outputRecord.setArtist("Bruce Springsteen");
-//            outputRecord.setAlbum("The River");
-//            outputRecord.setYear("1980");
-//            outputRecord.setId(6);
-//
-//            String outputJson = mapper.writeValueAsString(outputRecord);
+//            String inputJson = mapper.writeValueAsString(tester);
 //
 //            // ACT
 //            mockMvc.perform(
-//                            post("/records")                            // Perform the POST request.
-//                                    .content(inputJson)                           // Set the request body.
-//                                    .contentType(MediaType.APPLICATION_JSON)      // Tell the server it's in JSON format.
+//                            post("/add")                                    // Perform the POST request.
+//                                    .content(inputJson)                               // Set the request body.
+//                                    .contentType(MediaType.APPLICATION_JSON)          // Tell the server it's in JSON format.
 //                    )
-//                    .andDo(print())                                // Print results to console.
-//                    .andExpect(status().isCreated())               // ASSERT (status code is 201)
-//                    .andExpect(content().json(outputJson));        // ASSERT that what we're expecting is what we got back.
+//                    .andDo(print())                                                     // Print results to console.
+//                    .andExpect(status().isUnprocessableEntity());                       // ASSERT (status code is 422)
 //        }
-//
-//
-//
-//
-//
 
-//    }
-//
+
+
+
+
+
 
 }

@@ -1,5 +1,6 @@
 package com.company.M2ChallengeUstannyTreshaGaye.controller;
 
+import com.company.M2ChallengeUstannyTreshaGaye.exceptions.NotFoundException;
 import com.company.M2ChallengeUstannyTreshaGaye.model.MathSolution;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.http.HttpStatus;
@@ -15,44 +16,44 @@ public class MathSolutionController {
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     @ResponseStatus(value = HttpStatus.CREATED)
-    public MathSolution addMath (@RequestBody @Valid MathSolution answer) {
+    public MathSolution addMath (@RequestBody @Valid MathSolution solution) {
 
-        answer.setOperation("add");
-        answer.add();
+        solution.setOperation("add");
+        solution.add();
 
-        return answer;
+        return solution;
 
     }
 
     @RequestMapping(value = "/subtract", method = RequestMethod.POST)
     @ResponseStatus(value = HttpStatus.CREATED)
-    public MathSolution subtractMath (@RequestBody @Valid MathSolution answer) {
+    public MathSolution subtractMath (@RequestBody @Valid MathSolution solution) {
 
-        answer.setOperation("subtract");
-        answer.subtract();
+        solution.setOperation("subtract");
+        solution.subtract();
 
-        return answer;
+        return solution;
 
     }
 
     @RequestMapping(value = "/multiply", method = RequestMethod.POST)
     @ResponseStatus(value = HttpStatus.CREATED)
-    public MathSolution multiplyMath (@RequestBody @Valid MathSolution answer) {
+    public MathSolution multiplyMath (@RequestBody @Valid MathSolution solution) {
 
-        answer.setOperation("multiply");
-        answer.multiply();
+        solution.setOperation("multiply");
+        solution.multiply();
 
-        return answer;
+        return solution;
     }
 
     @RequestMapping(value = "/divide", method = RequestMethod.POST)
     @ResponseStatus(value = HttpStatus.CREATED)
-    public MathSolution divideMath (@RequestBody @Valid MathSolution answer) throws Exception {
+    public MathSolution divideMath (@RequestBody @Valid MathSolution solution) throws Exception {
 
-        answer.setOperation("divide");
-        answer.divide();
+        solution.setOperation("divide");
+        solution.divide();
 
-        return answer;
+        return solution;
     }
 
 }
