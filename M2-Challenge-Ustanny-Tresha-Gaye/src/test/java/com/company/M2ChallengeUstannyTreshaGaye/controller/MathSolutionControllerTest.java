@@ -37,6 +37,7 @@ public class MathSolutionControllerTest {
             // ARRANGE
             MathSolution tester = new MathSolution();
             tester.setOperand1(2);
+            tester.setOperand2(0);
             tester.setOperation("add");
             tester.add();
 

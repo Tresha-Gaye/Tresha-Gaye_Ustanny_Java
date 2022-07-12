@@ -1,5 +1,6 @@
 package com.company.M2ChallengeUstannyTreshaGaye.controller;
 
+import com.company.M2ChallengeUstannyTreshaGaye.exceptions.NotFoundException;
 import com.company.M2ChallengeUstannyTreshaGaye.model.Month;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -35,7 +36,11 @@ public class MonthConverterController {
     @ResponseStatus(value = HttpStatus.OK)
     public Month getMonthByMonthNumber(@PathVariable int monthNumber) {
 
-            Month specifiedMonth = null;
+        Month specifiedMonth = null;
+
+        if(monthNumber < 1 || monthNumber > 12){
+            throw new NotFoundException("Month not found: please enter month numbered 1 to 12");
+        }
 
             for(Month m : months) {
                 if(m.getNumber() == monthNumber) {
@@ -53,7 +58,6 @@ public class MonthConverterController {
     @RequestMapping(value = "/randomMonth", method = RequestMethod.GET)
     @ResponseStatus(value = HttpStatus.OK)
     public Month getRandomMonth() {
-
 
         Random randomMonthGenerator = new Random();
 
