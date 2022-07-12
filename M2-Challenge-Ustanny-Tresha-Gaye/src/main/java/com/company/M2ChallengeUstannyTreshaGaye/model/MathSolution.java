@@ -5,10 +5,10 @@ import java.util.Objects;
 
 public class MathSolution {
 
-    @NotNull(message="a number value is required")
+    @NotNull(message="a number value up to 10000 is required")
     @Max(10000)
     private int operand1;
-    @NotNull(message="a number value is required")
+    @NotNull(message="a number value up to 10000 is required")
     @Max(10000)
     private int operand2;
 
