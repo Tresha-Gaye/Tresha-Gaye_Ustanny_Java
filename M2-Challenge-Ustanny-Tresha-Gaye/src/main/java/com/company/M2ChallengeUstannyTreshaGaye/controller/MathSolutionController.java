@@ -50,8 +50,17 @@ public class MathSolutionController {
     @ResponseStatus(value = HttpStatus.CREATED)
     public MathSolution divideMath (@RequestBody @Valid MathSolution solution) throws Exception {
 
-        solution.setOperation("divide");
-        solution.divide();
+////        if (solution.getOperand1() == solution.getOperand2()) {
+//
+//        }
+
+        if(solution.getOperand2()==0) {
+            throw new ArithmeticException("You cannot divide by zero");
+        }
+        else {
+            solution.setOperation("divide");
+            solution.divide();
+        }
 
         return solution;
     }

@@ -62,11 +62,14 @@ public class MathSolution {
     }
 
     public int divide() throws Exception {
-        if(operation.equals("divide") && operand2 != 0){
+        if(operation.equals("divide")){
             answer = operand1 / operand2;
-        } else {
-            throw new Exception("ArithmeticException");
-        };
+        }
+//        if(operation.equals("divide") && operand2 != 0){
+//            answer = operand1 / operand2;
+//        } else if (operation.equals("divide") && operand2 == 0){
+//            throw new ArithmeticException("You cannot divide by zero");
+//        }
         return answer;
     }
 

@@ -77,30 +77,106 @@ public class MathSolutionControllerTest {
                 .andExpect(status().isUnprocessableEntity());             // ASSERT (status code is 422)
     }
 
+    @Test
+    public void shouldReturnDifferenceOfTwoOperands() throws Exception {
+        // ARRANGE
+        MathSolution solution1 = new MathSolution(4, 2);
+        solution1.setOperation("subtract");
+        solution1.subtract();
 
-//    @Test
-//        public void shouldReturn422StatusCodeIfOneOperandMissing() throws Exception {
-//            // ARRANGE
-//            MathSolution tester = new MathSolution(2, 2);
-//            tester.setOperation("add");
-//            tester.add();
-//
-//            // Convert Java Object to JSON.
-//            String inputJson = mapper.writeValueAsString(tester);
-//
-//            // ACT
-//            mockMvc.perform(
-//                            post("/add")                                    // Perform the POST request.
-//                                    .content(inputJson)                               // Set the request body.
-//                                    .contentType(MediaType.APPLICATION_JSON)          // Tell the server it's in JSON format.
-//                    )
-//                    .andDo(print())                                                     // Print results to console.
-//                    .andExpect(status().isUnprocessableEntity());                       // ASSERT (status code is 422)
-//        }
+        // Convert Java Object to JSON.
+        String inputJson = mapper.writeValueAsString(solution1);
 
+        // ACT
+        mockMvc.perform(
+                        post("/subtract")                                    // Perform the POST request.
+                                .content(inputJson)                               // Set the request body.
+                                .contentType(MediaType.APPLICATION_JSON)          // Tell the server it's in JSON format.
+                )
+                .andDo(print())                                                     // Print results to console.
+                .andExpect(status().isCreated())
+                .andExpect(content().json("{\"operand1\":4,\"operand2\":2,\"operation\":\"subtract\",\"answer\":2}"));
+    }
 
+    @Test
+    public void shouldReturnProductOfTwoOperands() throws Exception {
+        // ARRANGE
+        MathSolution solution1 = new MathSolution(2, 2);
+        solution1.setOperation("multiply");
+        solution1.multiply();
 
+        // Convert Java Object to JSON.
+        String inputJson = mapper.writeValueAsString(solution1);
 
+        // ACT
+        mockMvc.perform(
+                        post("/multiply")                                    // Perform the POST request.
+                                .content(inputJson)                               // Set the request body.
+                                .contentType(MediaType.APPLICATION_JSON)          // Tell the server it's in JSON format.
+                )
+                .andDo(print())                                                     // Print results to console.
+                .andExpect(status().isCreated())
+                .andExpect(content().json("{\"operand1\":2,\"operand2\":2,\"operation\":\"multiply\",\"answer\":4}"));
+    }
+
+    @Test
+    public void shouldReturnQuotientOfTwoOperands() throws Exception {
+        // ARRANGE
+        MathSolution solution1 = new MathSolution(2, 2);
+        solution1.setOperation("divide");
+        solution1.divide();
+
+        // Convert Java Object to JSON.
+        String inputJson = mapper.writeValueAsString(solution1);
+
+        // ACT
+        mockMvc.perform(
+                        post("/divide")                                    // Perform the POST request.
+                                .content(inputJson)                               // Set the request body.
+                                .contentType(MediaType.APPLICATION_JSON)          // Tell the server it's in JSON format.
+                )
+                .andDo(print())                                                     // Print results to console.
+                .andExpect(status().isCreated())
+                .andExpect(content().json("{\"operand1\":2,\"operand2\":2,\"operation\":\"divide\",\"answer\":1}"));
+    }
+
+    @Test
+    public void shouldReturn422ErrorIfDividingAndOperand2IsZero() throws Exception {
+        // ARRANGE
+        MathSolution solution1 = new MathSolution(2, 0);
+
+        // Convert Java Object to JSON.
+        String inputJson = mapper.writeValueAsString(solution1);
+
+        // ACT
+        mockMvc.perform(
+                        post("/divide")
+                                .content(inputJson)
+                                .contentType(MediaType.APPLICATION_JSON)
+                )
+                .andDo(print())
+                .andExpect(status().isUnprocessableEntity());
+
+    }
+
+    @Test
+    public void shouldReturn422ErrorIfDividingAndAnyOperandIsNotANumber() throws Exception {
+        // ARRANGE
+        MathSolution solution1 = new MathSolution(2, 0);
+
+        // Convert Java Object to JSON.
+        String inputJson = mapper.writeValueAsString(solution1);
+
+        // ACT
+        mockMvc.perform(
+                        post("/divide")
+                                .content(inputJson)
+                                .contentType(MediaType.APPLICATION_JSON)
+                )
+                .andDo(print())
+                .andExpect(status().isUnprocessableEntity());
+
+    }
 
 
 
