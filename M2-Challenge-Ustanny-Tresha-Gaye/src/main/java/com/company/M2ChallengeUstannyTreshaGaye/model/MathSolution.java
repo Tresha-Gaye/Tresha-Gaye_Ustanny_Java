@@ -6,17 +6,17 @@ import java.util.Objects;
 public class MathSolution {
 
     @NotNull(message="a number value is required")
-    @Max(10000000)
+    @Max(10000)
     private int operand1;
     @NotNull(message="a number value is required")
-    @Max(10000000)
+    @Max(10000)
     private int operand2;
 
     private String operation;
 
     private int answer;
 
-    // constructor
+    // constructors
 
     public MathSolution(int operand1, int operand2, String operation, int answer) {
         this.operand1 = operand1;
@@ -33,7 +33,6 @@ public class MathSolution {
     public MathSolution() {
 
     }
-
 
     // operation methods
 
@@ -63,16 +62,12 @@ public class MathSolution {
         if(operation.equals("divide")){
             answer = operand1 / operand2;
         }
-//        if(operation.equals("divide") && operand2 != 0){
-//            answer = operand1 / operand2;
-//        } else if (operation.equals("divide") && operand2 == 0){
-//            throw new ArithmeticException("You cannot divide by zero");
-//        }
         return answer;
     }
 
 
     // setters & getters
+
     public int getOperand1() {
         return operand1;
     }

@@ -1,7 +1,6 @@
 package com.company.M2ChallengeUstannyTreshaGaye.controller;
 
 import com.company.M2ChallengeUstannyTreshaGaye.model.MathSolution;
-import com.company.M2ChallengeUstannyTreshaGaye.model.Month;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Before;
 import org.junit.Test;
@@ -47,11 +46,11 @@ public class MathSolutionControllerTest {
 
         // ACT
         mockMvc.perform(
-                        post("/add")                                    // Perform the POST request.
-                                .content(inputJson)                               // Set the request body.
-                                .contentType(MediaType.APPLICATION_JSON)          // Tell the server it's in JSON format.
+                        post("/add")
+                                .content(inputJson)
+                                .contentType(MediaType.APPLICATION_JSON)
                 )
-                .andDo(print())                                                     // Print results to console.
+                .andDo(print())
                 .andExpect(status().isCreated())
                 .andExpect(content().json("{\"operand1\":2,\"operand2\":2,\"operation\":\"add\",\"answer\":4}"));
     }
@@ -66,13 +65,34 @@ public class MathSolutionControllerTest {
 
         // ACT
         mockMvc.perform(
-                        post("/add")                                // Perform the POST request.
-                                .content(inputJson)                               // Set the request body.
+                        post("/add")
+                                .content(inputJson)
                                 .contentType(MediaType.APPLICATION_JSON)
-                                .content("{\"operand1\":\"two\",\"operand2\":2}")// Tell the server it's in JSON format.
+                                .content("{\"operand1\":\"two\",\"operand2\":2}")
                 )
-                .andDo(print())                                           // Print results to console.
-                .andExpect(status().isUnprocessableEntity());             // ASSERT (status code is 422)
+                .andDo(print())
+                .andExpect(status().isUnprocessableEntity());
+    }
+
+    @Test
+    public void shouldReturn422StatusCodeIfOperandValueIsOutOfRange() throws Exception {
+        // ARRANGE
+        MathSolution solution1 = new MathSolution();
+        solution1.setOperand2(120000);
+        solution1.setOperand1(200000);
+
+        // Convert Java Object to JSON.
+        String inputJson = mapper.writeValueAsString(solution1);
+
+        // ACT
+        mockMvc.perform(
+                        post("/add")
+                                .content(inputJson)
+                                .contentType(MediaType.APPLICATION_JSON)
+
+                )
+                .andDo(print())
+                .andExpect(status().isUnprocessableEntity());
     }
 
     @Test
@@ -126,11 +146,11 @@ public class MathSolutionControllerTest {
 
         // ACT
         mockMvc.perform(
-                        post("/multiply")                                    // Perform the POST request.
-                                .content(inputJson)                               // Set the request body.
-                                .contentType(MediaType.APPLICATION_JSON)          // Tell the server it's in JSON format.
+                        post("/multiply")
+                                .content(inputJson)
+                                .contentType(MediaType.APPLICATION_JSON)
                 )
-                .andDo(print())                                                     // Print results to console.
+                .andDo(print())
                 .andExpect(status().isCreated())
                 .andExpect(content().json("{\"operand1\":2,\"operand2\":2,\"operation\":\"multiply\",\"answer\":4}"));
     }
@@ -164,11 +184,11 @@ public class MathSolutionControllerTest {
 
         // ACT
         mockMvc.perform(
-                        post("/divide")                                    // Perform the POST request.
-                                .content(inputJson)                               // Set the request body.
-                                .contentType(MediaType.APPLICATION_JSON)          // Tell the server it's in JSON format.
+                        post("/divide")
+                                .content(inputJson)
+                                .contentType(MediaType.APPLICATION_JSON)
                 )
-                .andDo(print())                                                     // Print results to console.
+                .andDo(print())
                 .andExpect(status().isCreated())
                 .andExpect(content().json("{\"operand1\":2,\"operand2\":2,\"operation\":\"divide\",\"answer\":1}"));
     }

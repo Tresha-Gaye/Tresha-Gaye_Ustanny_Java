@@ -2,9 +2,10 @@ openapi: 3.0.1
 info:
   title: OpenAPI definition
   version: v0
+  description: Month Converter API, allows you to convert numbers 1-12 into names of months & get random months. Math Solution API, allows you to call arithmetic operations on user entered numbers and get back a response with the numbers, operation and answer. Application includes tests.
 servers:
   - url: http://localhost:8080
-    description: This application includes a Month Convertion and Math Solution API. The Month Converter allows you to convert numbers 1-12 into names of months. The Math Solution allows you to call arithmetic operations on user entered numbers and get back a response with the numbers, operation and answer. Application includes tests.
+    description: Generated server url
 paths:
   /subtract:
     post:
@@ -36,10 +37,10 @@ paths:
             '*/*':
               schema:
                 oneOf:
-                  - $ref: '#/components/schemas/CustomErrorResponse'
                   - type: array
                     items:
                       $ref: '#/components/schemas/CustomErrorResponse'
+                  - $ref: '#/components/schemas/CustomErrorResponse'
   /multiply:
     post:
       tags:
@@ -70,10 +71,10 @@ paths:
             '*/*':
               schema:
                 oneOf:
-                  - $ref: '#/components/schemas/CustomErrorResponse'
                   - type: array
                     items:
                       $ref: '#/components/schemas/CustomErrorResponse'
+                  - $ref: '#/components/schemas/CustomErrorResponse'
   /divide:
     post:
       tags:
@@ -104,10 +105,10 @@ paths:
             '*/*':
               schema:
                 oneOf:
-                  - $ref: '#/components/schemas/CustomErrorResponse'
                   - type: array
                     items:
                       $ref: '#/components/schemas/CustomErrorResponse'
+                  - $ref: '#/components/schemas/CustomErrorResponse'
   /add:
     post:
       tags:
@@ -138,10 +139,10 @@ paths:
             '*/*':
               schema:
                 oneOf:
-                  - $ref: '#/components/schemas/CustomErrorResponse'
                   - type: array
                     items:
                       $ref: '#/components/schemas/CustomErrorResponse'
+                  - $ref: '#/components/schemas/CustomErrorResponse'
   /randomMonth:
     get:
       tags:
@@ -166,10 +167,10 @@ paths:
             '*/*':
               schema:
                 oneOf:
-                  - $ref: '#/components/schemas/CustomErrorResponse'
                   - type: array
                     items:
                       $ref: '#/components/schemas/CustomErrorResponse'
+                  - $ref: '#/components/schemas/CustomErrorResponse'
   /month/{monthNumber}:
     get:
       tags:
@@ -201,10 +202,10 @@ paths:
             '*/*':
               schema:
                 oneOf:
-                  - $ref: '#/components/schemas/CustomErrorResponse'
                   - type: array
                     items:
                       $ref: '#/components/schemas/CustomErrorResponse'
+                  - $ref: '#/components/schemas/CustomErrorResponse'
 components:
   schemas:
     CustomErrorResponse:
@@ -227,11 +228,11 @@ components:
       type: object
       properties:
         operand1:
-          maximum: 10000000
+          maximum: 10000
           type: integer
           format: int32
         operand2:
-          maximum: 10000000
+          maximum: 10000
           type: integer
           format: int32
         operation:
