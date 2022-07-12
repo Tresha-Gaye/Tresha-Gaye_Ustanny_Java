@@ -44,15 +44,14 @@ public class MathSolutionController {
         solution.multiply();
 
         return solution;
+
+
     }
 
     @RequestMapping(value = "/divide", method = RequestMethod.POST)
     @ResponseStatus(value = HttpStatus.CREATED)
     public MathSolution divideMath (@RequestBody @Valid MathSolution solution) throws Exception {
 
-////        if (solution.getOperand1() == solution.getOperand2()) {
-//
-//        }
 
         if(solution.getOperand2()==0) {
             throw new ArithmeticException("You cannot divide by zero");

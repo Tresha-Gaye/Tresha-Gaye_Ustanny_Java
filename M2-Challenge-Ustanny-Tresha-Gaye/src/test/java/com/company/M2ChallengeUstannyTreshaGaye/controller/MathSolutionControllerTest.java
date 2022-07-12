@@ -57,11 +57,9 @@ public class MathSolutionControllerTest {
     }
 
     @Test
-    public void shouldReturn422StatusCodeIfOperandIsNotANumber() throws Exception {
+    public void shouldReturn422StatusCodeIfAddingAndOperandIsNotANumber() throws Exception {
         // ARRANGE
         MathSolution solution1 = new MathSolution();
-//        solution1.setOperation("add");
-//        solution1.add();
 
         // Convert Java Object to JSON.
         String inputJson = mapper.writeValueAsString(solution1);
@@ -89,15 +87,33 @@ public class MathSolutionControllerTest {
 
         // ACT
         mockMvc.perform(
-                        post("/subtract")                                    // Perform the POST request.
-                                .content(inputJson)                               // Set the request body.
-                                .contentType(MediaType.APPLICATION_JSON)          // Tell the server it's in JSON format.
+                        post("/subtract")
+                                .content(inputJson)
+                                .contentType(MediaType.APPLICATION_JSON)
                 )
-                .andDo(print())                                                     // Print results to console.
+                .andDo(print())
                 .andExpect(status().isCreated())
                 .andExpect(content().json("{\"operand1\":4,\"operand2\":2,\"operation\":\"subtract\",\"answer\":2}"));
     }
 
+    @Test
+    public void shouldReturn422StatusCodeIfSubtractingAndAnOperandIsNotANumber() throws Exception {
+        // ARRANGE
+        MathSolution solution1 = new MathSolution();
+
+        // Convert Java Object to JSON.
+        String inputJson = mapper.writeValueAsString(solution1);
+
+        // ACT
+        mockMvc.perform(
+                        post("/subtract")
+                                .content(inputJson)
+                                .contentType(MediaType.APPLICATION_JSON)
+                                .content("{\"operand1\":\"twelve\",\"operand2\":2}")
+                )
+                .andDo(print())
+                .andExpect(status().isUnprocessableEntity());
+    }
     @Test
     public void shouldReturnProductOfTwoOperands() throws Exception {
         // ARRANGE
@@ -119,6 +135,23 @@ public class MathSolutionControllerTest {
                 .andExpect(content().json("{\"operand1\":2,\"operand2\":2,\"operation\":\"multiply\",\"answer\":4}"));
     }
 
+    @Test
+    public void shouldReturn422ErrorIfMultiplyingByAnyOperandThatIsNotANumber() throws Exception {
+        MathSolution solution1 = new MathSolution();
+
+        // Convert Java Object to JSON.
+        String inputJson = mapper.writeValueAsString(solution1);
+
+        // ACT
+        mockMvc.perform(
+                        post("/multiply")
+                                .content(inputJson)
+                                .contentType(MediaType.APPLICATION_JSON)
+                                .content("{\"operand1\":\"three\",\"operand2\":\"four\"}")
+                )
+                .andDo(print())
+                .andExpect(status().isUnprocessableEntity());
+    }
     @Test
     public void shouldReturnQuotientOfTwoOperands() throws Exception {
         // ARRANGE
@@ -162,7 +195,7 @@ public class MathSolutionControllerTest {
     @Test
     public void shouldReturn422ErrorIfDividingAndAnyOperandIsNotANumber() throws Exception {
         // ARRANGE
-        MathSolution solution1 = new MathSolution(2, 0);
+        MathSolution solution1 = new MathSolution();
 
         // Convert Java Object to JSON.
         String inputJson = mapper.writeValueAsString(solution1);
@@ -172,12 +205,12 @@ public class MathSolutionControllerTest {
                         post("/divide")
                                 .content(inputJson)
                                 .contentType(MediaType.APPLICATION_JSON)
+                                .content("{\"operand1\":20,\"operand2\":\"four\"}")
+
                 )
                 .andDo(print())
                 .andExpect(status().isUnprocessableEntity());
 
     }
-
-
 
 }
