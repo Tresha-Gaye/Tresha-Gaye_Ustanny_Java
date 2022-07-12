@@ -4,7 +4,7 @@ info:
   version: v0
 servers:
   - url: http://localhost:8080
-    description: This application provides a Month Converter and a Math Solution API
+    description: This application includes a Month Convertion and Math Solution API. The Month Converter allows you to convert numbers 1-12 into names of months. The Math Solution allows you to call arithmetic operations on user entered numbers and get back a response with the numbers, operation and answer. Application includes tests.
 paths:
   /subtract:
     post:
@@ -227,9 +227,11 @@ components:
       type: object
       properties:
         operand1:
+          maximum: 10000000
           type: integer
           format: int32
         operand2:
+          maximum: 10000000
           type: integer
           format: int32
         operation:
