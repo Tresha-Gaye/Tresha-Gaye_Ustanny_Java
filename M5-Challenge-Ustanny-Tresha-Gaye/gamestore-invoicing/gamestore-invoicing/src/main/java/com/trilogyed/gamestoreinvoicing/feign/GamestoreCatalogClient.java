@@ -1,6 +1,5 @@
-package com.trilogyed.gamestorecatalog.util.feign;
+package com.trilogyed.gamestoreinvoicing.feign;
 
-import com.trilogyed.gamestorecatalog.model.Game;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
