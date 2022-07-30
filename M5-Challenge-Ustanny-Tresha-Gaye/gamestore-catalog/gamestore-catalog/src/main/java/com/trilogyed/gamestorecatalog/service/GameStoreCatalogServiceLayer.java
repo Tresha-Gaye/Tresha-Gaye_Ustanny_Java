@@ -20,7 +20,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Component
-public class GameStoreCatalogServiceLayer implements CatalogService{
+public class GameStoreCatalogServiceLayer{
     private final String GAME_ITEM_TYPE = "Game";
     private final String CONSOLE_ITEM_TYPE = "Console";
     private final String TSHIRT_ITEM_TYPE = "T-Shirt";
