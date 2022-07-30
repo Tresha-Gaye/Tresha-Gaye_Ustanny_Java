@@ -1,6 +1,8 @@
 package com.trilogyed.gamestoreinvoicing.util.feign;
 
 import com.trilogyed.gamestoreinvoicing.model.GameViewModel;
+import com.trilogyed.gamestoreinvoicing.viewModel.ConsoleViewModel;
+import com.trilogyed.gamestoreinvoicing.viewModel.TShirtViewModel;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -14,28 +16,60 @@ public interface GameStoreInvoicingClient {
     // Game
     @GetMapping("/game")
     @ResponseStatus(HttpStatus.OK)
-    public List<GameViewModel> getAllGames();
+    List<GameViewModel> getAllGames();
 
     @GetMapping("/game/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public GameViewModel getGameInfo(@PathVariable("id") long gameId);
+    GameViewModel getGameInfo(@PathVariable("id") long gameId);
 
     @PutMapping("/game")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void updateGame(@RequestBody @Valid GameViewModel gameViewModel);
+    void updateGame(@RequestBody @Valid GameViewModel gameViewModel);
 
     @GetMapping("game/title/{title}")
     @ResponseStatus(HttpStatus.OK)
-    public List<GameViewModel> getGamesByTitle(@PathVariable("title") String title);
+    List<GameViewModel> getGamesByTitle(@PathVariable("title") String title);
 
     @GetMapping("game/esrbrating/{esrb}")
     @ResponseStatus(HttpStatus.OK)
-    public List<GameViewModel> getGamesByEsrbRating(@PathVariable("esrb") String esrb);
+    List<GameViewModel> getGamesByEsrbRating(@PathVariable("esrb") String esrb);
 
     @GetMapping("game/studio/{studio}")
     @ResponseStatus(HttpStatus.OK)
-    public List<GameViewModel> getGamesByStudio(@PathVariable("studio") String studio);
+    List<GameViewModel> getGamesByStudio(@PathVariable("studio") String studio);
 
+
+    // Console
+
+    @GetMapping("/console/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    ConsoleViewModel getConsole(@PathVariable("id") long consoleId);
+
+    @GetMapping("/console/manufacturer/{manufacturer}")
+    @ResponseStatus(HttpStatus.OK)
+    List<ConsoleViewModel> getConsoleByManufacturer(@PathVariable("manufacturer") String manu);
+
+    @GetMapping("/console")
+    @ResponseStatus(HttpStatus.OK)
+    List<ConsoleViewModel> getAllConsoles();
+
+// TShirt
+
+    @GetMapping("/tshirt/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public TShirtViewModel getTShirt(@PathVariable("id") long tShirtId);
+
+    @GetMapping("/tshirt/size/{size}")
+    @ResponseStatus(HttpStatus.OK)
+    public List<TShirtViewModel> getTShirtsBySize(@PathVariable("size") String size);
+
+    @GetMapping("/tshirt/color/{color}")
+    @ResponseStatus(HttpStatus.OK)
+    public List<TShirtViewModel> getTShirtsByColor(@PathVariable("color") String color);
+
+    @GetMapping("/tshirt")
+    @ResponseStatus(HttpStatus.OK)
+    public List<TShirtViewModel> getAllTShirts();
 
 
 
