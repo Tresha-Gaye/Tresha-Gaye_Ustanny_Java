@@ -14,7 +14,9 @@ import com.trilogyed.gamestoreinvoicing.viewModel.TShirtViewModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 
+import javax.validation.Valid;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.ArrayList;
@@ -81,6 +83,9 @@ public class GameStoreInvoicingServiceLayer {
 
     // tshirt methods
 
+    public TShirtViewModel createTShirt(@RequestBody @Valid TShirtViewModel tShirtViewModel){
+        return client.createTShirt(tShirtViewModel);
+    }
     public TShirtViewModel getTShirtById(@PathVariable("id") long tShirtId){
         return client.getTShirt(tShirtId);
     }
@@ -88,7 +93,7 @@ public class GameStoreInvoicingServiceLayer {
     public List<TShirtViewModel> getTShirtSize(@PathVariable("size") String size){
         return client.getTShirtsBySize(size);
     }
-
+    
     public List<TShirtViewModel> getTShirtColor(@PathVariable("color") String color){
         return client.getTShirtsByColor(color);
     }
@@ -128,6 +133,8 @@ public class GameStoreInvoicingServiceLayer {
         if (invoiceViewModel.getItemType().equals(CONSOLE_ITEM_TYPE)) {
             ConsoleViewModel tempCon = null;
             Optional<ConsoleViewModel> returnVal = Optional.ofNullable(getConsoleById(invoiceViewModel.getItemId()));
+            System.out.println(getConsoleById(invoiceViewModel.getItemId()));
+            System.out.println(returnVal);
 
             if (returnVal.isPresent()){
                 tempCon = returnVal.get();

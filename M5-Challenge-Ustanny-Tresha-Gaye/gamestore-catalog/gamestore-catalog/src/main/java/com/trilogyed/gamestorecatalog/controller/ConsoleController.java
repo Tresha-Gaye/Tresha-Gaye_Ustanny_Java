@@ -10,21 +10,20 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/console")
 @CrossOrigin(origins = {"http://localhost:3000"})
 public class ConsoleController {
 
     @Autowired
     GameStoreCatalogServiceLayer service;
 
-    @PostMapping
+    @PostMapping("/console")
     @ResponseStatus(HttpStatus.CREATED)
     public ConsoleViewModel createConsole(@RequestBody @Valid ConsoleViewModel consoleViewModel) {
         consoleViewModel = service.createConsole(consoleViewModel);
         return consoleViewModel;
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/console/{id}")
     @ResponseStatus(HttpStatus.OK)
     public ConsoleViewModel getConsole(@PathVariable("id") long consoleId) {
         ConsoleViewModel consoleViewModel = service.getConsoleById(consoleId);
@@ -35,7 +34,7 @@ public class ConsoleController {
         }
     }
 
-    @PutMapping
+    @PutMapping("/console/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void updateConsole(@RequestBody @Valid ConsoleViewModel consoleViewModel) {
 
@@ -46,13 +45,13 @@ public class ConsoleController {
         }
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/console/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteConsole(@PathVariable("id") long consoleId) {
         service.deleteConsole(consoleId);
     }
 
-    @GetMapping("/manufacturer/{manufacturer}")
+    @GetMapping("/console/manufacturer/{manufacturer}")
     @ResponseStatus(HttpStatus.OK)
     public List<ConsoleViewModel> getConsoleByManufacturer(@PathVariable("manufacturer") String manu) {
         List<ConsoleViewModel> cvmByManufacturer = service.getConsoleByManufacturer(manu);
@@ -62,7 +61,7 @@ public class ConsoleController {
             return cvmByManufacturer;
     }
 
-    @GetMapping()
+    @GetMapping("/console")
     @ResponseStatus(HttpStatus.OK)
     public List<ConsoleViewModel> getAllConsoles() {
         List<ConsoleViewModel> cvmByManufacturer = service.getAllConsoles();

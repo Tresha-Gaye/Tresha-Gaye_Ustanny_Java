@@ -1,6 +1,11 @@
 package com.trilogyed.gamestoreinvoicing.repository;
 
-import com.trilogyed.gamestore.model.*;
+import com.trilogyed.gamestoreinvoicing.model.Invoice;
+import com.trilogyed.gamestoreinvoicing.model.ProcessingFee;
+import com.trilogyed.gamestoreinvoicing.model.Tax;
+import com.trilogyed.gamestoreinvoicing.util.feign.GameStoreInvoicingClient;
+import com.trilogyed.gamestoreinvoicing.viewModel.InvoiceViewModel;
+import com.trilogyed.gamestoreinvoicing.viewModel.TShirtViewModel;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -22,11 +27,7 @@ public class InvoiceRepositoryTest {
     @Autowired
     InvoiceRepository invoiceRepository;
     @Autowired
-    TShirtRepository tShirtRepository;
-    @Autowired
-    GameRepository gameRepository;
-    @Autowired
-    ConsoleRepository consoleRepository;
+    GameStoreInvoicingClient client;
     @Autowired
     TaxRepository taxRepository;
     @Autowired
@@ -34,9 +35,6 @@ public class InvoiceRepositoryTest {
 
     @Before
     public void setUp() throws Exception {
-        consoleRepository.deleteAll();
-        gameRepository.deleteAll();
-        tShirtRepository.deleteAll();
         invoiceRepository.deleteAll();
         processingFeeRepository.deleteAll();
 
@@ -61,7 +59,7 @@ public class InvoiceRepositoryTest {
     public void shouldAddFindDeleteInvoice() {
 
         //Arrange
-        TShirt tShirt1 = new TShirt();
+        TShirtViewModel tShirt1 = new TShirtViewModel();
         tShirt1.setSize("M");
         tShirt1.setColor("Blue");
         tShirt1.setDescription("v-neck short sleeve");
@@ -72,7 +70,7 @@ public class InvoiceRepositoryTest {
         tShirt1.setPrice(new BigDecimal("15.99"));
 
         tShirt1.setQuantity(8);
-        tShirt1 = tShirtRepository.save(tShirt1);
+        tShirt1 = client.createTShirt(tShirt1);
 
         Invoice invoice1 = new Invoice();
         invoice1.setName("Joe Black");
@@ -120,7 +118,7 @@ public class InvoiceRepositoryTest {
     public void shouldFindByName() {
 
         //Arrange
-        TShirt tShirt1 = new TShirt();
+        TShirtViewModel tShirt1 = new TShirtViewModel();
         tShirt1.setSize("M");
         tShirt1.setColor("Blue");
         tShirt1.setDescription("v-neck short sleeve");
@@ -131,7 +129,7 @@ public class InvoiceRepositoryTest {
         tShirt1.setPrice(new BigDecimal("15.99"));
 
         tShirt1.setQuantity(8);
-        tShirt1 = tShirtRepository.save(tShirt1);
+        tShirt1 = client.createTShirt(tShirt1);
 
         Invoice invoice1 = new Invoice();
         invoice1.setName("Joe Black");

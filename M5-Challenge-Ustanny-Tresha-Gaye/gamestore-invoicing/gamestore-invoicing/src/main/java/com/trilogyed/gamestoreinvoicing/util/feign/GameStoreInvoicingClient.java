@@ -55,21 +55,25 @@ public interface GameStoreInvoicingClient {
 
 // TShirt
 
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    TShirtViewModel createTShirt(@RequestBody @Valid TShirtViewModel tShirtViewModel);
+
     @GetMapping("/tshirt/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public TShirtViewModel getTShirt(@PathVariable("id") long tShirtId);
+    TShirtViewModel getTShirt(@PathVariable("id") long tShirtId);
 
     @GetMapping("/tshirt/size/{size}")
     @ResponseStatus(HttpStatus.OK)
-    public List<TShirtViewModel> getTShirtsBySize(@PathVariable("size") String size);
+    List<TShirtViewModel> getTShirtsBySize(@PathVariable("size") String size);
 
     @GetMapping("/tshirt/color/{color}")
     @ResponseStatus(HttpStatus.OK)
-    public List<TShirtViewModel> getTShirtsByColor(@PathVariable("color") String color);
+    List<TShirtViewModel> getTShirtsByColor(@PathVariable("color") String color);
 
     @GetMapping("/tshirt")
     @ResponseStatus(HttpStatus.OK)
-    public List<TShirtViewModel> getAllTShirts();
+    List<TShirtViewModel> getAllTShirts();
 
 
 

@@ -6,7 +6,6 @@ import com.trilogyed.gamestorecatalog.model.TShirt;
 import com.trilogyed.gamestorecatalog.repository.ConsoleRepository;
 import com.trilogyed.gamestorecatalog.repository.GameRepository;
 import com.trilogyed.gamestorecatalog.repository.TShirtRepository;
-import com.trilogyed.gamestorecatalog.util.feign.GamestoreCatalogClient;
 import com.trilogyed.gamestorecatalog.viewModel.ConsoleViewModel;
 import com.trilogyed.gamestorecatalog.viewModel.GameViewModel;
 import com.trilogyed.gamestorecatalog.viewModel.TShirtViewModel;

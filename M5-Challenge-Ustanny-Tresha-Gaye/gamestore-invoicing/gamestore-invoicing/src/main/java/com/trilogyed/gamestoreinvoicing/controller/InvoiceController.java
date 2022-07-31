@@ -124,5 +124,12 @@ public class InvoiceController {
         return service.getTShirts();
     }
 
+    //this is for invoicing tests only
+    @PostMapping("/tshirt")
+    @ResponseStatus(HttpStatus.CREATED)
+    TShirtViewModel createTShirt(@RequestBody @Valid TShirtViewModel tShirtViewModel){
+        return service.createTShirt(tShirtViewModel);
+    }
+
 
 }

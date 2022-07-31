@@ -1,6 +1,6 @@
 package com.trilogyed.gamestoreinvoicing.repository;
 
-import com.trilogyed.gamestore.model.Tax;
+import com.trilogyed.gamestoreinvoicing.model.Tax;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
