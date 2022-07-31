@@ -55,7 +55,7 @@ public interface GameStoreInvoicingClient {
 
 // TShirt
 
-    @PostMapping
+    @PostMapping("/tshirt")
     @ResponseStatus(HttpStatus.CREATED)
     TShirtViewModel createTShirt(@RequestBody @Valid TShirtViewModel tShirtViewModel);
 

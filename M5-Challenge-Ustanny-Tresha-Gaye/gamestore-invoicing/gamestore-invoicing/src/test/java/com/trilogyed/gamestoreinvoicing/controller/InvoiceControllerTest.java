@@ -268,7 +268,7 @@ public class InvoiceControllerTest {
         when(storeServiceLayer.getInvoicesByCustomerName("Sandy Beach")).thenReturn(foundAllInvoices);
 
         //Act & Assert
-        this.mockMvc.perform(get("/invoice/cname/{name}","Sandy Beach"))
+        this.mockMvc.perform(get("/invoice/name/{name}","Sandy Beach"))
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(content().json(outputJson));
@@ -277,13 +277,13 @@ public class InvoiceControllerTest {
         when(storeServiceLayer.getInvoicesByCustomerName("no customer")).thenReturn(null);
 
         //Act & Assert
-        this.mockMvc.perform(get("/invoice/cname/{name}","no customer"))
+        this.mockMvc.perform(get("/invoice/name/{name}","no customer"))
                 .andDo(print())
                 .andExpect(status().isNotFound());
     }
 
     @Test
-    public void shouldFailCreateUnvoiceWithBadData() throws Exception{
+    public void shouldFailCreateInvoiceWithBadData() throws Exception{
         InvoiceViewModel inInvoiceMV = new InvoiceViewModel();
         inInvoiceMV.setName("");
         inInvoiceMV.setStreet("123 Main St");

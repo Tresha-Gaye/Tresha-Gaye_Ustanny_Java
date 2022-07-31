@@ -13,6 +13,7 @@ import com.trilogyed.gamestoreinvoicing.viewModel.InvoiceViewModel;
 import com.trilogyed.gamestoreinvoicing.viewModel.TShirtViewModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -23,7 +24,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-@Component
+@Service
 public class GameStoreInvoicingServiceLayer {
 
     private final BigDecimal PROCESSING_FEE = new BigDecimal("15.49");
@@ -93,7 +94,7 @@ public class GameStoreInvoicingServiceLayer {
     public List<TShirtViewModel> getTShirtSize(@PathVariable("size") String size){
         return client.getTShirtsBySize(size);
     }
-    
+
     public List<TShirtViewModel> getTShirtColor(@PathVariable("color") String color){
         return client.getTShirtsByColor(color);
     }
