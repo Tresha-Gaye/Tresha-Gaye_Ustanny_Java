@@ -24,7 +24,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-@Service
+@Component
 public class GameStoreInvoicingServiceLayer {
 
     private final BigDecimal PROCESSING_FEE = new BigDecimal("15.49");

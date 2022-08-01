@@ -1,6 +1,7 @@
 package com.trilogyed.gamestoreinvoicing.repository;
 
 import com.trilogyed.gamestoreinvoicing.model.Tax;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,12 @@ public class TaxRepositoryTest {
 
     @Autowired
     TaxRepository taxRepository;
+
+    @Before
+    public void setUp() throws Exception {
+        taxRepository.deleteAll();
+    }
+
 
     Tax[] states = new Tax[]{
         new Tax("AK",new BigDecimal("0.06")),
