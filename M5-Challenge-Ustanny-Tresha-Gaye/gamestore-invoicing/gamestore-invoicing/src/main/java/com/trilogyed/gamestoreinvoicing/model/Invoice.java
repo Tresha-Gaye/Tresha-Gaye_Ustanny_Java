@@ -79,11 +79,11 @@ public class Invoice {
     }
 
     public BigDecimal getUnitPrice() {
-        return unitPrice.setScale(2, RoundingMode.HALF_UP);
+        return unitPrice;
     }
 
     public void setUnitPrice(BigDecimal unitPrice) {
-        this.unitPrice = unitPrice.setScale(2, RoundingMode.HALF_UP);
+        this.unitPrice = unitPrice;
     }
 
     public long getQuantity() {
@@ -95,35 +95,35 @@ public class Invoice {
     }
 
     public BigDecimal getSubtotal() {
-        return subtotal.setScale(2, RoundingMode.HALF_UP);
+        return subtotal;
     }
 
     public void setSubtotal(BigDecimal subtotal) {
-        this.subtotal = subtotal.setScale(2, RoundingMode.HALF_UP);
+        this.subtotal = subtotal;
     }
 
     public BigDecimal getTax() {
-        return tax.setScale(2, RoundingMode.HALF_UP);
+        return tax;
     }
 
     public void setTax(BigDecimal tax) {
-        this.tax = tax.setScale(2, RoundingMode.HALF_UP);
+        this.tax = tax;
     }
 
     public BigDecimal getProcessingFee() {
-        return processingFee.setScale(2, RoundingMode.HALF_UP);
+        return processingFee;
     }
 
     public void setProcessingFee(BigDecimal processingFee) {
-        this.processingFee = processingFee.setScale(2, RoundingMode.HALF_UP);
+        this.processingFee = processingFee;
     }
 
     public BigDecimal getTotal() {
-        return total.setScale(2, RoundingMode.HALF_UP);
+        return total;
     }
 
     public void setTotal(BigDecimal total) {
-        this.total = total.setScale(2, RoundingMode.HALF_UP);
+        this.total = total;
     }
 
     public long getId() {

@@ -63,6 +63,13 @@ public class InvoiceController {
             return invoiceViewModelList;
         }
     }
+
+    @PutMapping
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void updateInvoice(@RequestBody InvoiceViewModel ivm) {
+        service.updateInvoice(ivm);
+    }
+
     // game controllers
     @GetMapping("/game")
     public List<GameViewModel> getAllGames() {
@@ -89,6 +96,12 @@ public class InvoiceController {
         return service.getGameStudio(studio);
     }
 
+    @PutMapping ("/game")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void updateGame(@RequestBody @Valid GameViewModel gameViewModel) {
+        service.updateGame(gameViewModel);
+    }
+
     // Console controllers
 
     @GetMapping("/console/{id}")
@@ -102,6 +115,11 @@ public class InvoiceController {
     @GetMapping("/console")
     public List<ConsoleViewModel> getAllConsoles(){
        return service.getConsoles();
+    }
+
+    @PutMapping("/console")
+    public void updateConsole(@RequestBody @Valid ConsoleViewModel consoleViewModel){
+            service.updateConsole(consoleViewModel);
     }
 
     // tshirt controllers
@@ -129,6 +147,16 @@ public class InvoiceController {
     @ResponseStatus(HttpStatus.CREATED)
     TShirtViewModel createTShirt(@RequestBody @Valid TShirtViewModel tShirtViewModel){
         return service.createTShirt(tShirtViewModel);
+    }
+
+    @PutMapping("/tshirt")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void updateTShirt(@RequestBody @Valid TShirtViewModel tShirtViewModel) {
+        if (tShirtViewModel==null || tShirtViewModel.getId() < 1) {
+            throw new IllegalArgumentException("Id in path must match id in view model");
+        }else if (tShirtViewModel.getId() > 0) {
+            service.updateTShirt(tShirtViewModel);
+        }
     }
 
 

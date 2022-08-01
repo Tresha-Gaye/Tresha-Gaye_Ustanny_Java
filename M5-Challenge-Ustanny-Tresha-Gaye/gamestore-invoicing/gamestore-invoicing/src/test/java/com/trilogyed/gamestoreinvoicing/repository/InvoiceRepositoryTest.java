@@ -14,6 +14,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import javax.persistence.EntityManager;
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.List;
 import java.util.Optional;
 
@@ -71,8 +72,8 @@ public class InvoiceRepositoryTest {
 
         //The double quotes forces the decimal point.
         // an alternative to set BigDecimal is using:
-        // tShirt1.setPrice(new BigDecimal("15.99").setScale(2, RoundingMode.HALF_UP));
-        tShirt1.setPrice(new BigDecimal("15.99"));
+         tShirt1.setPrice(new BigDecimal("15.99").setScale(2, RoundingMode.HALF_UP));
+//        tShirt1.setPrice(new BigDecimal("15.99"));
 
         tShirt1.setQuantity(8);
         tShirt1 = client.createTShirt(tShirt1);
@@ -93,9 +94,10 @@ public class InvoiceRepositoryTest {
                         new BigDecimal(invoice1.getQuantity()))
         );
 
-//        Optional<Tax> tax = taxRepository.findById(invoice1.getState());
-//        assertTrue(tax.isPresent());
-        invoice1.setTax(new BigDecimal(0.03));
+        Optional<Tax> tax = taxRepository.findById(invoice1.getState());
+        assertTrue(tax.isPresent());
+        invoice1.setTax(invoice1.getSubtotal().multiply(tax.get().getRate()));
+//        invoice1.setTax(new BigDecimal(0.03));
 
         Optional<ProcessingFee> processingFee = processingFeeRepository.findById(invoice1.getItemType());
         assertTrue(processingFee.isPresent());
@@ -130,8 +132,8 @@ public class InvoiceRepositoryTest {
 
         //The double quotes forces the decimal point.
         //an alternative to set BigDecimal is using:
-        //tShirt1.setPrice(new BigDecimal("15.99").setScale(2, RoundingMode.HALF_UP));
-        tShirt1.setPrice(new BigDecimal("15.99"));
+        tShirt1.setPrice(new BigDecimal("15.99").setScale(2, RoundingMode.HALF_UP));
+//        tShirt1.setPrice(new BigDecimal("15.99"));
 
         tShirt1.setQuantity(8);
         tShirt1 = client.createTShirt(tShirt1);
@@ -149,10 +151,10 @@ public class InvoiceRepositoryTest {
 
         invoice1.setSubtotal(tShirt1.getPrice().multiply(new BigDecimal(invoice1.getQuantity())));
 
-//        Optional<Tax> tax = taxRepository.findById(invoice1.getState());
-//        assertTrue(tax.isPresent());
-//        invoice1.setTax(invoice1.getSubtotal().multiply(tax.get().getRate()));
-        invoice1.setTax(new BigDecimal(0.05));
+        Optional<Tax> tax = taxRepository.findById(invoice1.getState());
+        assertTrue(tax.isPresent());
+        invoice1.setTax(invoice1.getSubtotal().multiply(tax.get().getRate()));
+//        invoice1.setTax(new BigDecimal(0.05));
 
         Optional<ProcessingFee> processingFee = processingFeeRepository.findById(invoice1.getItemType());
         assertTrue(processingFee.isPresent());

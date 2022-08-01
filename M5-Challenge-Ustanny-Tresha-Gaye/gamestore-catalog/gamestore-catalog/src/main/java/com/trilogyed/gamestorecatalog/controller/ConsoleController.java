@@ -34,15 +34,10 @@ public class ConsoleController {
         }
     }
 
-    @PutMapping("/console/{id}")
+    @PutMapping("/console")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void updateConsole(@RequestBody @Valid ConsoleViewModel consoleViewModel) {
-
-        if (consoleViewModel==null || consoleViewModel.getId()< 1) {
-            throw new IllegalArgumentException("Id in path must match id in view model");
-        } else if (consoleViewModel.getId() > 0) {
             service.updateConsole(consoleViewModel);
-        }
     }
 
     @DeleteMapping("/console/{id}")

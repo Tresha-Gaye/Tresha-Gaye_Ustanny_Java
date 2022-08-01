@@ -32,11 +32,11 @@ public class Tax {
 
 
     public BigDecimal getRate() {
-        return rate.setScale(2, RoundingMode.HALF_UP);
+        return rate;
     }
 
     public void setRate(BigDecimal rate) {
-        this.rate = rate.setScale(2, RoundingMode.HALF_UP);
+        this.rate = rate;
     }
 
     @Override

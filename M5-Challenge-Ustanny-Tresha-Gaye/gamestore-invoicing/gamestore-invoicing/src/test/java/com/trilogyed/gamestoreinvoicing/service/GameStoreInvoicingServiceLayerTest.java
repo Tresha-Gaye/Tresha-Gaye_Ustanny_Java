@@ -1,6 +1,5 @@
 package com.trilogyed.gamestoreinvoicing.service;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.trilogyed.gamestoreinvoicing.model.Invoice;
 import com.trilogyed.gamestoreinvoicing.model.ProcessingFee;
 import com.trilogyed.gamestoreinvoicing.model.Tax;
@@ -9,9 +8,9 @@ import com.trilogyed.gamestoreinvoicing.repository.ProcessingFeeRepository;
 import com.trilogyed.gamestoreinvoicing.repository.TaxRepository;
 
 
+import com.trilogyed.gamestoreinvoicing.util.feign.GameStoreInvoicingClient;
 import com.trilogyed.gamestoreinvoicing.viewModel.InvoiceViewModel;
 import com.trilogyed.gamestoreinvoicing.viewModel.TShirtViewModel;
-import junit.framework.TestCase;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -41,6 +40,8 @@ public class GameStoreInvoicingServiceLayerTest {
     private ProcessingFeeRepository processingFeeRepository;
     private TaxRepository taxRepository;
 
+    GameStoreInvoicingClient client;
+
     @Autowired
     private WebApplicationContext webApplicationContext;
     private MockMvc mockMvc;
@@ -58,7 +59,7 @@ public class GameStoreInvoicingServiceLayerTest {
         setUpProcessingFeeRepositoryMock();
         setUpTaxRepositoryMock();
 
-        service = new GameStoreInvoicingServiceLayer(invoiceRepository, taxRepository, processingFeeRepository);
+        service = new GameStoreInvoicingServiceLayer(invoiceRepository, taxRepository, processingFeeRepository, client);
     }
 
     @Test

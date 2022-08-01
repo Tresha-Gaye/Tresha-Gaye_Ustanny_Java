@@ -53,6 +53,10 @@ public interface GameStoreInvoicingClient {
     @ResponseStatus(HttpStatus.OK)
     List<ConsoleViewModel> getAllConsoles();
 
+    @PutMapping("/console")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    void updateConsole(@RequestBody @Valid ConsoleViewModel consoleViewModel);
+
 // TShirt
 
     @PostMapping("/tshirt")
@@ -75,7 +79,9 @@ public interface GameStoreInvoicingClient {
     @ResponseStatus(HttpStatus.OK)
     List<TShirtViewModel> getAllTShirts();
 
-
+    @PutMapping("/tshirt")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    void updateTShirt(@RequestBody @Valid TShirtViewModel tShirtViewModel);
 
 
 }

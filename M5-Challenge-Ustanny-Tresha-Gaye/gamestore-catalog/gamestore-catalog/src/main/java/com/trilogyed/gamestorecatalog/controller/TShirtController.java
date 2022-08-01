@@ -38,11 +38,7 @@ public class TShirtController {
     @PutMapping
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void updateTShirt(@RequestBody @Valid TShirtViewModel tShirtViewModel) {
-        if (tShirtViewModel==null || tShirtViewModel.getId() < 1) {
-            throw new IllegalArgumentException("Id in path must match id in view model");
-        }else if (tShirtViewModel.getId() > 0) {
-            service.updateTShirt(tShirtViewModel);
-        }
+        service.updateTShirt(tShirtViewModel);
     }
 
     @DeleteMapping("/{id}")

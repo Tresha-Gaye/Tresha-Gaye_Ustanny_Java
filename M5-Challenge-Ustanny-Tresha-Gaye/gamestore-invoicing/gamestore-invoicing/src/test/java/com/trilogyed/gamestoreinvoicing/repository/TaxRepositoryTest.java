@@ -9,6 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.math.BigDecimal;
+import java.util.Arrays;
 import java.util.Optional;
 
 import static org.junit.Assert.*;
@@ -23,6 +24,7 @@ public class TaxRepositoryTest {
     @Before
     public void setUp() throws Exception {
         taxRepository.deleteAll();
+        taxRepository.saveAll(Arrays.asList(states));
     }
 
 
@@ -86,6 +88,7 @@ public class TaxRepositoryTest {
         for (Tax stateSalesTax :
              states) {
             foundTax = taxRepository.findById(stateSalesTax.getState());
+
             assertTrue(foundTax.isPresent());
             assertEquals(foundTax.get(), stateSalesTax);
         }
