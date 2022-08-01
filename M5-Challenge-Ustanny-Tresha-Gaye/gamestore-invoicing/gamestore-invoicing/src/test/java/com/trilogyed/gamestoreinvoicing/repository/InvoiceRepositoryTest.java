@@ -4,7 +4,6 @@ import com.trilogyed.gamestoreinvoicing.model.Invoice;
 import com.trilogyed.gamestoreinvoicing.model.ProcessingFee;
 import com.trilogyed.gamestoreinvoicing.model.Tax;
 import com.trilogyed.gamestoreinvoicing.util.feign.GameStoreInvoicingClient;
-import com.trilogyed.gamestoreinvoicing.viewModel.InvoiceViewModel;
 import com.trilogyed.gamestoreinvoicing.viewModel.TShirtViewModel;
 import org.junit.Before;
 import org.junit.Test;

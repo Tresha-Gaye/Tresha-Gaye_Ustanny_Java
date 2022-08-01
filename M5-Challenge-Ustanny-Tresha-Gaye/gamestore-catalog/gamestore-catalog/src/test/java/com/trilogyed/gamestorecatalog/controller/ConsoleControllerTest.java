@@ -466,7 +466,7 @@ public class ConsoleControllerTest {
         doNothing().when(this.service).updateConsole(inConsole);
 
         mockMvc.perform(
-                MockMvcRequestBuilders.put("/console")
+                MockMvcRequestBuilders.put("/console/15")
                         .content(mapper.writeValueAsString(inConsole)) //converts object to JSON and places into RequestBody
                         .contentType(MediaType.APPLICATION_JSON))
                 .andDo(print()) //for debugging purposes. Prints the request, handler,... and response objects to the console below.
@@ -484,7 +484,7 @@ public class ConsoleControllerTest {
 
         //ResultActions x = mockMvc.perform(
         mockMvc.perform(
-                MockMvcRequestBuilders.put("/console")
+                MockMvcRequestBuilders.put("/console/15")
                         .content(mapper.writeValueAsString(inConsole)) //converts object to JSON and places into RequestBody
                         .contentType(MediaType.APPLICATION_JSON))
                 .andDo(print()) //for debugging purposes. Prints the request, handler,... and response objects to the console below.
@@ -495,7 +495,7 @@ public class ConsoleControllerTest {
     @Test
     public void shouldFailUpdateConsoleInvalidPrice() throws Exception {
 
-        //perform the call, pass argutments (path variables & requestBody), use objectMapper to convert objects
+        //perform the call, pass arguments (path variables & requestBody), use objectMapper to convert objects
         // from/to JSON format.
 
         //Mock "in"coming Console  with null price
@@ -515,7 +515,7 @@ public class ConsoleControllerTest {
 
         //ResultActions x = mockMvc.perform(
         mockMvc.perform(
-                MockMvcRequestBuilders.put("/console")
+                MockMvcRequestBuilders.put("/console/15")
                         .content(mapper.writeValueAsString(inConsole)) //converts object to JSON and places into RequestBody
                         .contentType(MediaType.APPLICATION_JSON))
                 .andDo(print()) //for debugging purposes. Prints the request, handler,... and response objects to the console below.
@@ -534,7 +534,7 @@ public class ConsoleControllerTest {
 
         //ResultActions x = mockMvc.perform(
         mockMvc.perform(
-                MockMvcRequestBuilders.put("/console")
+                MockMvcRequestBuilders.put("/console/15")
                         .content(mapper.writeValueAsString(inConsole)) //converts object to JSON and places into RequestBody
                         .contentType(MediaType.APPLICATION_JSON))
                 .andDo(print()) //for debugging purposes. Prints the request, handler,... and response objects to the console below.
@@ -553,7 +553,7 @@ public class ConsoleControllerTest {
 
         //ResultActions x = mockMvc.perform(
         mockMvc.perform(
-                MockMvcRequestBuilders.put("/console")
+                MockMvcRequestBuilders.put("/console/15")
                         .content(mapper.writeValueAsString(inConsole)) //converts object to JSON and places into RequestBody
                         .contentType(MediaType.APPLICATION_JSON))
                 .andDo(print()) //for debugging purposes. Prints the request, handler,... and response objects to the console below.
@@ -584,7 +584,7 @@ public class ConsoleControllerTest {
 
         //ResultActions x = mockMvc.perform(
         mockMvc.perform(
-                MockMvcRequestBuilders.put("/console")
+                MockMvcRequestBuilders.put("/console/16")
                         .content(mapper.writeValueAsString(inConsole)) //converts object to JSON and places into RequestBody
                         .contentType(MediaType.APPLICATION_JSON))
                 .andDo(print()) //for debugging purposes. Prints the request, handler,... and response objects to the console below.
@@ -609,7 +609,7 @@ public class ConsoleControllerTest {
         when(service.getConsoleById(16)).thenReturn(null);
 
         mockMvc.perform( MockMvcRequestBuilders
-                .get("/console/{id}", 16)
+                .get("/console/16")
                 .accept(MediaType.APPLICATION_JSON))
                 .andDo(print()) //for debugging purposes. Prints the request, handler,... and response objects to the console below.
                 .andExpect(status().isNotFound())
