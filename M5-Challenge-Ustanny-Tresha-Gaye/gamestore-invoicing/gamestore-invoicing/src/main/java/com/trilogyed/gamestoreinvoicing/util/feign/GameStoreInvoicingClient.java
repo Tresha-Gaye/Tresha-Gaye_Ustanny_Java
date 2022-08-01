@@ -1,7 +1,7 @@
 package com.trilogyed.gamestoreinvoicing.util.feign;
 
-import com.trilogyed.gamestoreinvoicing.model.GameViewModel;
 import com.trilogyed.gamestoreinvoicing.viewModel.ConsoleViewModel;
+import com.trilogyed.gamestoreinvoicing.viewModel.GameViewModel;
 import com.trilogyed.gamestoreinvoicing.viewModel.TShirtViewModel;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.HttpStatus;

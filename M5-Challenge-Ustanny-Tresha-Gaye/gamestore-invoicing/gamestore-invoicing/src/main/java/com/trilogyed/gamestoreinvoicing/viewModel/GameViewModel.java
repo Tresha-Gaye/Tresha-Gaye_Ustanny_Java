@@ -1,4 +1,4 @@
-package com.trilogyed.gamestoreinvoicing.model;
+package com.trilogyed.gamestoreinvoicing.viewModel;
 
 import java.math.BigDecimal;
 import java.util.Objects;

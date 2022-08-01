@@ -1,6 +1,5 @@
 package com.trilogyed.gamestoreinvoicing.service;
 
-import com.trilogyed.gamestoreinvoicing.model.GameViewModel;
 import com.trilogyed.gamestoreinvoicing.model.Invoice;
 import com.trilogyed.gamestoreinvoicing.model.ProcessingFee;
 import com.trilogyed.gamestoreinvoicing.model.Tax;
@@ -9,6 +8,7 @@ import com.trilogyed.gamestoreinvoicing.repository.ProcessingFeeRepository;
 import com.trilogyed.gamestoreinvoicing.repository.TaxRepository;
 import com.trilogyed.gamestoreinvoicing.util.feign.GameStoreInvoicingClient;
 import com.trilogyed.gamestoreinvoicing.viewModel.ConsoleViewModel;
+import com.trilogyed.gamestoreinvoicing.viewModel.GameViewModel;
 import com.trilogyed.gamestoreinvoicing.viewModel.InvoiceViewModel;
 import com.trilogyed.gamestoreinvoicing.viewModel.TShirtViewModel;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,6 +42,7 @@ public class GameStoreInvoicingServiceLayer {
 
     GameStoreInvoicingClient client;
 
+    @Autowired
     public GameStoreInvoicingServiceLayer(InvoiceRepository invoiceRepo, TaxRepository taxRepo, ProcessingFeeRepository processingFeeRepo, GameStoreInvoicingClient client) {
         this.invoiceRepo = invoiceRepo;
         this.taxRepo = taxRepo;
@@ -49,12 +50,7 @@ public class GameStoreInvoicingServiceLayer {
         this.client = client;
     }
 
-    @Autowired
-
-
-
-
-    // Game Feign methods
+     // Game Feign methods
     public List<GameViewModel> getGames() {
         List<GameViewModel> gameList = this.client.getAllGames();
         return gameList;

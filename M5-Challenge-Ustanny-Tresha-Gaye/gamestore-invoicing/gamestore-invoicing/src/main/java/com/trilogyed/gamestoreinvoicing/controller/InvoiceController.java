@@ -1,8 +1,8 @@
 package com.trilogyed.gamestoreinvoicing.controller;
 
-import com.trilogyed.gamestoreinvoicing.model.GameViewModel;
 import com.trilogyed.gamestoreinvoicing.service.GameStoreInvoicingServiceLayer;
 import com.trilogyed.gamestoreinvoicing.viewModel.ConsoleViewModel;
+import com.trilogyed.gamestoreinvoicing.viewModel.GameViewModel;
 import com.trilogyed.gamestoreinvoicing.viewModel.InvoiceViewModel;
 import com.trilogyed.gamestoreinvoicing.viewModel.TShirtViewModel;
 import org.springframework.beans.factory.annotation.Autowired;
