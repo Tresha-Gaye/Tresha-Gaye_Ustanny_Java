@@ -12,7 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import javax.persistence.EntityManager;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.List;
@@ -28,8 +27,6 @@ public class InvoiceRepositoryTest {
     @Autowired
     InvoiceRepository invoiceRepository;
 
-    @Autowired
-    private EntityManager entityManager;
     @Autowired
     GameStoreInvoicingClient client;
     @Autowired
@@ -65,18 +62,6 @@ public class InvoiceRepositoryTest {
     public void shouldAddFindDeleteInvoice() {
 
         //Arrange
-        TShirtViewModel tShirt1 = new TShirtViewModel();
-        tShirt1.setSize("M");
-        tShirt1.setColor("Blue");
-        tShirt1.setDescription("v-neck short sleeve");
-
-        //The double quotes forces the decimal point.
-        // an alternative to set BigDecimal is using:
-         tShirt1.setPrice(new BigDecimal("15.99").setScale(2, RoundingMode.HALF_UP));
-//        tShirt1.setPrice(new BigDecimal("15.99"));
-
-        tShirt1.setQuantity(8);
-        tShirt1 = client.createTShirt(tShirt1);
 
         Invoice invoice1 = new Invoice();
         invoice1.setName("Joe Black");
@@ -85,19 +70,18 @@ public class InvoiceRepositoryTest {
         invoice1.setState("NY");
         invoice1.setZipcode("10016");
         invoice1.setItemType("T-Shirts");
-        invoice1.setItemId(tShirt1.getId());
-        invoice1.setUnitPrice(tShirt1.getPrice());
+        invoice1.setItemId(1);
+        invoice1.setUnitPrice(new BigDecimal ("12.00"));
         invoice1.setQuantity(2);
 
         invoice1.setSubtotal(
-                tShirt1.getPrice().multiply(
+                invoice1.getUnitPrice().multiply(
                         new BigDecimal(invoice1.getQuantity()))
         );
 
         Optional<Tax> tax = taxRepository.findById(invoice1.getState());
         assertTrue(tax.isPresent());
         invoice1.setTax(invoice1.getSubtotal().multiply(tax.get().getRate()));
-//        invoice1.setTax(new BigDecimal(0.03));
 
         Optional<ProcessingFee> processingFee = processingFeeRepository.findById(invoice1.getItemType());
         assertTrue(processingFee.isPresent());
@@ -130,8 +114,6 @@ public class InvoiceRepositoryTest {
         tShirt1.setColor("Blue");
         tShirt1.setDescription("v-neck short sleeve");
 
-        //The double quotes forces the decimal point.
-        //an alternative to set BigDecimal is using:
         tShirt1.setPrice(new BigDecimal("15.99").setScale(2, RoundingMode.HALF_UP));
 //        tShirt1.setPrice(new BigDecimal("15.99"));
 
